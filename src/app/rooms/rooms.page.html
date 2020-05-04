@@ -1,0 +1,114 @@
+<ion-content>
+    <section class="mainSection">
+       <div class="customContainer">
+        <div class="leftSidebar">
+            <app-left-navbar [current_page_id]='3'></app-left-navbar>
+        </div>
+        <div class="rightSidebar margin-left-rightsidebar offset-left-338">
+                 <div class="title" *ngIf="!!currentProtocolName">
+                    <p>{{'protocol_types_title.'+currentProtocolName | translate}}</p>
+                </div>
+                <div class="lgTitle">
+                    <h1  class="heading padding-left-11"><span *ngIf="(currentProtocolId!=1 && currentProtocolId!=2 && currentProtocolId!=3) || ((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id !== '')">{{'offline_tool.navigations.rooms' | translate }}</span>
+                        <span *ngIf="(currentProtocolId==1 && partiesInfo && partiesInfo.unit_id == '') || (currentProtocolId==2 && partiesInfo && partiesInfo.unit_id == '') || (currentProtocolId==3 && partiesInfo && partiesInfo.unit_id == '')" class="heading padding-left-11">{{'offline_tool.labels.floors' | translate }}</span><span class="completeCircle" (click)="editClick()" *ngIf="!isCancel">
+                        <a>
+                            <img src="./assets/images/three-dots.svg" alt="icon-caret">
+                        </a>
+                    </span>
+                        <span class="completeCircle afterTick" (click)="editClick()" *ngIf="isCancel">
+                        <a>
+                            <img src="./assets/images/icon-check-w.png" alt="icon-tick">
+                        </a>
+                    </span></h1>
+
+                    <div class="editLink">
+                        <span class="inlineBlock offset-back-arrow">
+                            <a (click)="goToParties()" class="btn btn-sm btn-b btn-left">
+                                <img src="./assets/images/arrow-left.svg" alt="icon-caret">
+                            </a>
+                        </span>
+                        <span class="inlineBlock">
+                            <a (click)="goToMisc()" class="btn btn-sm btn-g btn-next">
+                                <img src="./assets/images/arrow-right.svg" alt="icon-caret">
+                            </a>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="roomsContainer"
+                *ngIf="((currentProtocolId!=1 && currentProtocolId!=2 && currentProtocolId!=3)
+                || ((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id !== ''))">
+                <div class="roomCardBox" *ngFor="let roomdata of session_rooms;let i= index" [ngClass]="roomdata.complete ? 'completed' : ''" (click)="presentLoading(roomdata,i)">
+                    <div class="room-card-block">
+                        <h4 *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomdata.name)">{{'rooms.'+roomdata.name | translate}}</h4>
+                        <h4 *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomdata.name)">{{roomdata.name}}</h4>
+                        <div class="bottomDiv">
+                            <span *ngIf="currentProtocolId==1">
+                                <span class="green" *ngIf="roomdata?.deficiencyCount == 1">{{roomdata.deficiencyCount}} {{'offline_tool.main_categories.deficiency' | translate}} </span>
+                                <span class="green" *ngIf="roomdata?.deficiencyCount > 1">{{roomdata.deficiencyCount}} {{'offline_tool.main_categories_plural.deficiency' | translate}} </span>
+                                <span class="green" *ngIf="roomdata?.openissueCount ==1">{{roomdata.openissueCount}} {{'offline_tool.main_categories.open_issue' | translate}} </span>
+                                <span class="green" *ngIf="roomdata?.openissueCount > 1">{{roomdata.openissueCount}} {{'offline_tool.main_categories_plural.open_issue' | translate}} </span>
+                             </span>
+                            <span class="green" *ngIf="roomdata?.not_ok_count > 0">{{roomdata.not_ok_count}} {{'requests.category.deficiency'| translate}}</span>
+                            <span class="components" *ngIf="roomdata.components_count > 1">{{roomdata?.done}}/{{roomdata.components_count}} {{'offline_tool.labels.components'| translate}}</span>
+                            <span class="components" *ngIf="roomdata.components_count == 1">{{roomdata?.done}}/{{roomdata.components_count}} {{'offline_tool.labels.component'| translate}}</span>
+                        </div>
+                        <div class="crossKill" *ngIf="isCancel && roomdata.showDelete" (click)="eraseRoom($event, roomdata, i)">
+                            <ion-icon ios="ios-close" md="md-close"></ion-icon>
+                        </div>
+                        <div class="crossKill" *ngIf="isCancel && !roomdata.showDelete">
+                            <ion-spinner class="loader-color" name="crescent"></ion-spinner>
+                        </div>
+                        <span *ngIf="roomdata?.complete" class="completedMark">
+                            <img src="./assets/images/icon-check-w.png" alt="icon check">
+                        </span>
+                    </div>
+                </div>
+
+                <a class="roomCardBox" *ngIf="((currentProtocolId==4 || currentProtocolId==5) && isCancel) || ((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id != '' && isCancel)" [routerLink]="['/add-room']">
+                    <div class="addRoom">
+                        <span class="iconAdd"><ion-icon ios="ios-add" md="md-add"></ion-icon></span>
+                        <p>{{'offline_tool.headings.add_new_room' | translate}}</p>
+                    </div>
+                </a>
+
+        </div>
+
+
+        <div class="roomsContainer" *ngIf="((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id=='')">
+            <div class="roomCardBox" *ngFor="let floordata of session_floors;let i= index" [ngClass]="floordata?.complete ? 'completed' : ''" (click)="presentLoading(floordata,i)">
+                <div class="room-card-block">
+                    <h4 *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.floors, floordata.name)">{{'floors.'+floordata.name | translate}}</h4>
+                    <h4 *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.floors, floordata.name)">{{floordata.name}}</h4>
+                    <div class="bottomDiv">
+                        <span class="green" *ngIf="floordata.deficiencyCount == 1">{{floordata.deficiencyCount}} {{'offline_tool.main_categories.deficiency' | translate}} </span>
+                        <span class="green" *ngIf="floordata.deficiencyCount > 1">{{floordata.deficiencyCount}} {{'offline_tool.main_categories_plural.deficiency' | translate}} </span>
+                        <span class="green" *ngIf="floordata.openissueCount ==1">{{floordata.openissueCount}} {{'offline_tool.main_categories.open_issue' | translate}} </span>
+                        <span class="green" *ngIf="floordata.openissueCount > 1">{{floordata.openissueCount}} {{'offline_tool.main_categories_plural.open_issue' | translate}} </span>
+
+                    </div>
+                    <div class="crossKill" *ngIf="isCancel && floordata.showDelete" (click)="eraseFloor($event, floordata, i)">
+                        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+                    </div>
+                    <div class="crossKill" *ngIf="isCancel && !floordata.showDelete">
+                        <ion-spinner class="loader-color" name="crescent"></ion-spinner>
+                    </div>
+                    <!--<span *ngIf="floordata.complete" class="completedMark">-->
+                        <!--<img src="./assets/images/icon-check-w.png" alt="icon check">-->
+                        <!--</span>-->
+                    </div>
+                </div>
+                <a *ngIf="isCancel && allFloorCount !== session_floors.length" class="roomCardBox" [routerLink]="['/add-floor']">
+                    <div class="addRoom">
+                        <span class="iconAdd"><ion-icon ios="ios-add" md="md-add"></ion-icon></span>
+                        <p> {{('offline_tool.labels.add_new_floor' | translate) }}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</ion-content>

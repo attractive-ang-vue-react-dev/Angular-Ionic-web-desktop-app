@@ -1,0 +1,15 @@
+<div class="logoLeft">
+  <a [routerLink]="['/home']">
+    <img src="./assets/images/logo.png" title="my home | logo">
+  </a>
+</div>
+
+<ul class="nav navigationTop " >
+  <li *ngFor="let item of links">
+    <a [ngClass] = "{'active color-g': item.enable == true && item.active == true,'inactive': item.enable == false && item.active == false}"
+      (click)="goToItemPage(item)"
+    >
+      {{ item.name }}
+    </a>
+  </li>
+</ul>

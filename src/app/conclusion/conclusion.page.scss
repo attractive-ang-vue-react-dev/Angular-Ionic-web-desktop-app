@@ -1,0 +1,150 @@
+
+ion-item.remove-datepicker-border {
+	--border-color: transparent;
+}
+.select-icon-inner {
+	--display: none;
+}
+
+.btn.btn-sm {
+	padding: 6px;
+}
+
+.signatureWrapper {
+	.signatureShowcaseContainer {
+		width: 48%;
+		float: left;
+		margin-right: 2%;
+		margin-bottom: 2%;
+		height: 220px;
+		label {
+			font-size: 18px;
+			padding: 10px 1px;
+			display: block;
+			position: absolute;
+			color: #9E9FA0;
+			margin-left: 15px;
+			margin-top: 20px;
+		}
+		.signatureShowcase {
+			max-height: 220px;
+			min-height: 220px;
+			background: var(--ion-color-medium-contrast);
+			border-radius: 8px;
+			margin-bottom: 20px;
+			cursor: pointer;
+			overflow: hidden;
+			margin: 17px auto;
+			text-align: center;
+			img {
+				padding-top: 55px;
+				padding-bottom: 10px;
+				width: 300px;
+				max-height: 220px;
+				min-height: 220px;
+			}
+		}
+	}
+}
+
+.date-value-input{
+	color:#9E9FA0;
+	font-weight: normal;
+	font-size: 18px;
+}
+
+.splitter .field {
+	margin-bottom: unset;
+	ion-item {
+		cursor: pointer;
+	}
+
+	&:first-child {
+		ion-item {
+			border-top: unset;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+		}
+	}
+
+	&:last-child {
+		ion-item {
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+		}
+	}
+}
+
+
+
+.arrow-icon-heigth{
+	font-size: 50px;
+}
+
+.btn {
+	display: flex;
+	height: 58px;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	font-size: 18px;
+	background-color: var(--ion-color-medium);
+	font-weight: 500;
+	cursor: pointer;
+	&.btnPrimary{
+		background-color: var(--ion-theme-primary-color);
+		color: var(--ion-color-medium-contrast);
+	}
+	&.btn-sm {
+		height: 44px;
+		padding: 0;
+		border-radius: 50px;
+		width: 44px;
+		font-size: 28px;
+	}
+	&.btn-g {
+		background: var(--ion-theme-secondary-color);
+		color: var(--ion-color-medium-contrast);
+	}
+	&.btn-w{
+		background: #cecfcf;
+		color: var(--ion-color-medium-contrast);
+	}
+	&.btn-balticsea{
+		background: var(--ion-balticsea-color);
+		color: var(--ion-color-medium-contrast);
+		font-weight: 300;
+	}
+}
+
+
+.color{
+	color: #3d3f41 !important;
+	font-weight: 500 !important;
+}
+
+.field .iconAction {
+	position: absolute;
+	top: 54%;
+	z-index: 9;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.field .outCome{
+	color: #9E9FA0;
+	font-size:18px;
+}
+.mainSection {
+	.item-interactive.ion-valid{
+		--highlight-background: none;
+		--background-color: #fff;
+		--background:#fff;
+	}
+}
+.editLink{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Color" width="24" height="24" rx="12" fill="#007aff"/>
+    </clipPath>
+  </defs>
+  <g id="Button" clip-path="url(#clip-path)">
+    <path id="Icon" d="M10.285,1.714A1.714,1.714,0,1,1,12,3.428,1.714,1.714,0,0,1,10.285,1.714Zm-5.142,0A1.714,1.714,0,1,1,6.857,3.428,1.714,1.714,0,0,1,5.143,1.714ZM0,1.714A1.714,1.714,0,1,1,1.714,3.428,1.714,1.714,0,0,1,0,1.714Z" transform="translate(5.143 10.286)" fill="#fff"/>
+  </g>
+</svg>

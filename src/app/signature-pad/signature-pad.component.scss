@@ -1,0 +1,21 @@
+.normalTextarea{
+    background: var(--ion-pop-color);
+    ul{
+        border-top: 1px solid var(--ion-border-light);
+        li{
+            display: inline-block;
+            width: 50%;
+            text-align: center;
+            button{
+                background: var(--ion-theme-none-color);
+                font-size: 18px;
+                font-weight: 300;
+                padding: 15px 0;
+                color: var(--ion-theme-primary-color);
+            }
+            &:last-child{
+                border-left: 1px solid var(--ion-border-light);
+            }
+        }
+    }
+}

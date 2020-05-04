@@ -1,0 +1,40 @@
+<section class="loginPage">
+  <div class="loginWrapper">
+    <div class="floatCenter">
+      <div class="cardBoard">
+        <div class="logoHolder">
+          <img src="./assets/images/logo.png" alt="logo">
+        </div>
+        <h1>Login</h1>
+        <p>Geben Sie Ihre Zugangsdaten ein.</p>
+        <div class="formWrapper">
+          <div class="field">
+            <ion-input [(ngModel)]="userInfo.email" type="email" placeholder="E-Mail"></ion-input>
+          </div>
+          <div class="field">
+            <ion-input [(ngModel)]="userInfo.password" type="password" placeholder="Passwort"></ion-input>
+          </div>
+          <!--<ion-row>-->
+            <!--<ion-col size="12">-->
+              <!--<div class="checkBox">-->
+                  <!--<ion-checkbox color="primary" (ionChange)="changeValue();"></ion-checkbox>-->
+                  <!--<ion-label>Eingeloggt bleiben</ion-label>-->
+              <!--</div>-->
+            <!--</ion-col>-->
+            <!--&lt;!&ndash; <ion-col size="6">-->
+              <!--<div class="forgotLink"><a href="#">Forgot Password</a></div>-->
+            <!--</ion-col> &ndash;&gt;-->
+          <!--</ion-row>-->
+          <div class="btnWrapper">
+            <ion-buttons>
+              <ion-back-button></ion-back-button>
+            </ion-buttons>
+            <ion-title (click)="gotoHome()" class="btn btnPrimary">
+              <span>Login</span>
+            </ion-title>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

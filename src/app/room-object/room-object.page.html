@@ -1,0 +1,134 @@
+<header *ngIf="!!headerbackTitle && !!headerTitle" [showBackBtn]="true" [title]="(headerTitle | translate)" [backTitle]="(headerbackTitle | translate)"  [showSaveButton]="false" (goBackBtnEvent)="goToRoom()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div class="backLink" (click)="goToRoom()" *ngIf="(currentProtocolId==4 || currentProtocolId==5) || ((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id != '')">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>      
+        <p>{{'offline_tool.navigations.rooms' | translate }}</p>                
+      </div>
+
+      <div class="backLink" (click)="goToRoom()" *ngIf="((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id == '')">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>
+        <p>{{'offline_tool.labels.floors' | translate }}</p>
+      </div>
+
+    </ion-buttons> -->
+    <!-- <ion-title class="offset-100" *ngIf="(currentProtocolId!=1 && currentProtocolId!=2 && currentProtocolId!=3) || ((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id !== '')"> -->
+      <!-- {{'offline_tool.navigations.rooms' | translate }}: -->
+      <!-- <span class="object" *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomIdObj.room_name)">{{'rooms.'+roomIdObj.room_name | translate}}</span>
+      <span class="object" *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomIdObj.room_name)">{{roomIdObj.room_name}}</span>
+    </ion-title>
+    <ion-title class="offset-100" *ngIf="((currentProtocolId==1 || currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id == '')"> -->
+     <!-- {{'components.floor' | translate }}:-->
+     <!-- <span class="object" *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.floors, roomIdObj.room_name)">{{'floors.'+roomIdObj.room_name | translate}}</span>
+     <span class="object" *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.floors, roomIdObj.room_name)">{{roomIdObj.room_name}}</span>
+   </ion-title>
+ </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div *ngIf="TranslationService.translationsList" class="rightSidebar margin-left-rightsidebar room-page-container" [ngClass]="currentProtocolId==1 || ((currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id == '')?'rightSidebar-adjust-padding':''">
+        <div class="secObjectList" *ngIf="(currentProtocolId==4 || currentProtocolId==5) || ((currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id != '')">
+          <ion-list lines="none">
+            <div class="radiusBg">
+              <div class="wrapper" *ngFor="let component of room_components;let i = index">
+                <div *ngIf="component.complete" class="checked"><img src="./assets/images/check.svg" alt="icon checked"></div>
+                <ion-item-sliding #item (ionDrag)="checkForSide(i, $event)">
+                  <div *ngIf="needToShow === true && i === currentSwipe" class="fixed-drag">
+                    <ion-label *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.components, component.name)">{{'components.'+component.name | translate}}</ion-label>
+                    <ion-label *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.components, component.name)">{{component.name}}</ion-label>
+                  </div>
+                  <ion-item [class]="component.complete?'done-another':''" (click)="goToRequestPage(i)" [ngClass]="currentComponentIndex == i?'':''">
+                    <ion-label *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.components, component.name) && i !== currentSwipe">{{'components.'+component.name | translate}}</ion-label>
+                    <ion-label *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.components, component.name) && i !== currentSwipe">{{component.name}}</ion-label>
+                    <ion-label slot="end" class="ion-text-right">
+                      <span class="outCome">
+                        <span  *ngIf="!component.complete">{{'offline_tool.labels.pending' | translate}}</span>
+                        <span  *ngIf="component.complete && request_categories[component.category_id] !== 'okay'">{{'requests.category.'+request_categories[component.category_id] | translate}}</span>
+                        <span  *ngIf="component.complete && request_categories[component.category_id] == 'okay'">{{'offline_tool.categories.'+request_categories[component.category_id] | translate}}</span>
+                    </span>
+                      <span class="iconAction">
+                        <button class="nothing offset-top-24"><img alt="icon-pencil" class="mx-width18 room-mx" src="./assets/images/right.svg"></button></span>
+                    </ion-label>
+                  </ion-item>
+                  <span class="border-line"></span>
+                      <ion-item-options side="end">
+                        <ion-item-option class="grey_color" (click)="duplicateComponent(component,i);rarely(item)">{{'offline_tool.labels.duplicate' | translate}}</ion-item-option>
+                        <ion-item-option (click)="clearComponent(component.id,i);rarely(item)">{{'offline_tool.labels.delete' | translate}}</ion-item-option>
+                      </ion-item-options>
+                      <ion-item-options side="start" *ngIf="currentProtocolId==4 || currentProtocolId==5" (ionSwipe)="markOkay(i, item)">
+                        <ion-item-option (click)="markOkay(i, item)" class="secondary_color">{{'offline_tool.categories.okay' | translate}}</ion-item-option>
+                      </ion-item-options>
+                    </ion-item-sliding>
+                  </div>
+                </div>
+                <ion-item *ngIf="showMarkBtn" (click)="addNewComponent()" class="add-btn last-addnew room-last">
+                  <ion-label> <span class=" iconLeft">
+                    <img src="./assets/images/add-48.png">
+                  </span>{{'offline_tool.headings.add_component' | translate}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+
+            <div class="secObjectList" *ngIf="currentProtocolId==1 || ((currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id == '')">
+              <ion-grid>
+                <ion-col class="field preData floor-field self-start">
+                  <div (click)="goToRequestPage(1)" class="cstmSelect">
+                    <span class="add_icon"></span>
+                    {{'offline_tool.labels.record.deficiency' | translate}}
+                  </div>
+                </ion-col>
+                <ion-col class="field preData floor-field self-end">
+                  <div (click)="goToRequestPage(2)" class="cstmSelect">
+                    <span class="add_icon"></span>
+                    {{'offline_tool.labels.record.open_issue' | translate}}
+                  </div>
+                </ion-col>
+              </ion-grid>
+            </div>
+            <div class="secObjectList mrt-110" *ngIf="currentProtocolId==1 || ((currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id == '')">
+              <div class="formWrapper">
+                <div class="formContainer">
+
+                  <ion-list class="protocol123_wo_unit" *ngIf="currentRequests" lines="none">
+                    <div class="radiusBg">
+                      <div class="wrapper" *ngFor="let request of currentRequests;let i = index">
+                          <ion-item-sliding #item (ionDrag)="checkForSide(i, $event)">
+                            <ion-item (click)="goToRequestPage(request.category_id, i)">
+                              <ion-label>{{request.title}}</ion-label>
+                              <ion-label  class="ion-text-right">{{'offline_tool.main_categories.'+request_categories[request.category_id] | translate}}</ion-label></ion-item>
+                            <ion-item-options side="end">
+                              <ion-item-option class="grey_color" (click)="duplicateRequest(request,i);rarely(item)">{{'offline_tool.labels.duplicate' | translate}}</ion-item-option>
+                              <ion-item-option (click)="clearRequest(request.id,i);rarely(item)">{{'offline_tool.labels.delete' | translate}}</ion-item-option>
+                            </ion-item-options>
+                            <span class="border-line"></span>
+                          </ion-item-sliding>
+                      </div>
+                    </div>
+                  </ion-list>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="classicButton">
+          <span class="mark-all-btn" [ngClass]="(currentRoomLength > 1 && isNextRoomBtn)?'':'mark-all-btn-center'"  *ngIf="(currentProtocolId==4 || currentProtocolId==5) && showMarkBtn" >
+            <ion-button (click)="markAll()" [disabled]="!goToNextRoom"><ion-spinner *ngIf="markLoader" class="loader-color-default" name="crescent"></ion-spinner>{{'offline_tool.labels.rest_done_mark' | translate}}</ion-button>
+          </span>
+          <span class="align-right" *ngIf="((currentProtocolId==4 || currentProtocolId==5 || currentProtocolId==2 || currentProtocolId==3) && currentRoomLength > 1 && isNextRoomBtn)">
+            <ion-button (click)="goToNextRoomInspection()" [disabled]="goToNextRoom"><ion-spinner *ngIf="nextRoomLoader" class="loader-color-default" name="crescent"></ion-spinner>{{'offline_tool.labels.next_room' | translate}}</ion-button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</ion-content>

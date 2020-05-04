@@ -1,0 +1,43 @@
+<header [showBackBtn]="true" [title]="('offline_tool.labels.room_name' | translate)" [backTitle]="('offline_tool.labels.add_new_room' | translate)"  [showSaveButton]="true" (goBackBtnEvent)="goToAddNewRoom()" (saveDataBtnEvent)="closeListSelector()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"> -->
+      <!-- <ion-button (click)="closeListSelector()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+        {{'offline_tool.labels.add_new_room' | translate}}
+      </ion-button> -->
+      <!-- <div class="backLink" (click)="goToAddNewRoom()">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>     
+        <p>{{'offline_tool.labels.add_new_room' | translate}}</p>               
+      </div>
+    </ion-buttons>
+    <ion-title class="offset-100"> {{'offline_tool.labels.room_name' | translate}}</ion-title>
+    <ion-buttons slot="end" class="right-arrow">
+      <div class="editLink">
+        <span class="inlineBlock">
+          <a (click)="closeListSelector()" class="btn btn-sm btn-g">
+            <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+          </a>
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div class="rightSidebar margin-left-rightsidebar field paddingtop38">
+        <!-- <ion-item> -->
+          <ion-input #inputField class="" [(ngModel)]="getNewRoomName" placeholder="{{'offline_tool.labels.room_name' | translate}}" type="text"></ion-input>
+          <!-- <ion-label></ion-label> -->
+          <!-- </ion-item>     -->
+          <!-- <app-filter-list [list]="listArr" [filteredList]="filteredListArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName"></app-filter-list> -->
+        </div>
+      </div>
+    </section>
+  </ion-content>

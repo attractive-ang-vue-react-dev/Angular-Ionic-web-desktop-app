@@ -1,0 +1,87 @@
+.mainSection{
+    .leftSidebar{
+
+        .navigationTop{
+            li{
+                padding-bottom: 0;
+            }
+        }
+        .btnWrapper{
+            padding: 50px 60px;
+            ion-title{
+                padding: 0 42px;
+                text-align: initial;
+                .icon{
+                    float: right;
+                }
+            }
+        }
+    }
+    //.protocolList {
+    //    .list-md{
+    //        // max-width: 90%;
+    //        border-radius: 8px;
+    //        // padding: 0 0 0 20px;
+    //        // box-shadow: var(--ion-shadow-card);
+    //
+    //        ion-item{
+    //            --background:none;
+    //            --background-hover:none;
+    //            --background-focused:none;
+    //            --background-activated:none;
+    //            --transition: none;
+    //            --ripple-color:none;
+    //            ion-label{
+    //                color: var(--ion-placeholder-color);
+    //                // font-size: 18px;
+    //                // font-weight: 100;
+    //                // padding: 24px 0;
+    //                display: block;
+    //                margin: 0;
+    //            }
+    //            ion-radio.ios.in-item.interactive.hydrated.radio-checked {
+    //                width: 30px;
+    //                height: 40px;
+    //                margin: 0;
+    //                --color-checked: var(--ion-theme-primary-color);
+    //            }
+    //            &.item-radio-checked{
+    //                ion-label{
+    //                    font-weight: bold;
+    //                    color: var(--ion-theme-primary-color);
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+}
+
+.dropdownlist {
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+.margin-left{
+    margin-left: 350px;
+}
+
+.right-arrow {
+    right: 101px;
+    left: inherit;
+    top: 25px;
+}
+@media only screen and (max-width: 2736px) and (min-width: 1700px){
+    .mainSection .protocolList .list-md ion-item ion-label {
+        font-size: 18px !important; 
+        padding: 24px 0 !important;
+    }
+}
+@media (max-width: 1500px){
+    .right-arrow {
+        right: 75px;
+        left: inherit;
+    }
+}
+.btn.btn-sm{
+    width:40px;
+    height:40px;
+}

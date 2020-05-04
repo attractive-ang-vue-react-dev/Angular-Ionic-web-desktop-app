@@ -1,0 +1,86 @@
+::ng-deep {
+    .alert-popup-modal .modal-wrapper {
+        max-height: 221px;
+        width: 480px;
+        border-radius: 5px;
+    }
+
+    .variation2 .modal-wrapper {
+        max-height: 239px;
+        .alert-btn {
+            top:3px; 
+        }
+        .alert-txt {
+            top: 22px;
+        }
+    }
+    .variation3 .modal-wrapper {
+        max-height: 265px;
+        .alert-btn {
+            top:16px; 
+        }
+
+        .alert-txt {
+            top: 22px;
+        }
+    }
+    .modal-content > li {
+        height: 80px;
+    }
+    .popup-icon {
+        height: 54px;
+        width: 52px;
+        margin: auto;
+        position: relative;
+    }
+    .info-icons {
+        top: 28px;
+    }
+    .warning-icons {
+        top: 28px;
+    }
+
+    .popup-icon > img {
+        width: 50px;
+        padding-top:4px;
+    }
+
+    .success-icons {
+        height: 40px;
+        top: 42px;
+    }
+
+    .alert-content {
+        position: relative;
+
+    }
+    .alert-txt {
+        position: relative;
+        color: #9E9FA5;
+        padding: 0px 55px 0 55px;
+        top: 27px;
+        line-height: normal;
+    }
+    .alert-btn {
+        text-align: center;
+        display: inline;
+        height: 42px;
+        width: 118px;
+        color: #fff;
+        border-radius: 6px;
+        font-size: 16px;
+        position: relative;
+        top: -6px;
+        margin-left: 5px;
+        margin-right: 5px;
+        
+    }
+
+    .ok-btn, .agree-btn {
+        background: #3D3F41;
+    }
+
+    .no-btn, .stay-btn {
+        background: #77787A;
+    }
+}

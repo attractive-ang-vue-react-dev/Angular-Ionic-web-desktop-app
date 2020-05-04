@@ -1,0 +1,69 @@
+.loginPage{
+    background-color: var(--ion-color-medium-contrast);
+    min-height: 100vh;
+    background: url(../../assets/images/login_bg.png) center center no-repeat;
+    background-size: cover;
+    .loginWrapper{
+        .floatCenter {
+            min-height: 100vh;
+            position: relative;
+            margin: 0 40px;
+            .cardBoard {
+                background: var(--ion-color-gray-100);
+                box-shadow: var(--ion-shadow-100);
+                padding: 40px 40px 10px 40px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                max-width: 450px;
+                line-height: 1.4;
+                .logoHolder {
+                    max-width: 220px;
+                    margin: 20px auto 50px;
+                }
+                h1{
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
+                p{
+                    color: var(--ion-color-dark-tint);
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 300;
+                    margin-bottom: 30px;
+                }
+                .formWrapper{
+                    .field{
+                        margin-bottom: 10px;
+                    }
+                    .checkBox{
+                        display: flex;
+                        align-items: center;
+                        ion-label{margin-left: 5px;}
+                        margin-top: 20px;
+                    }
+                    .forgotLink{
+                        text-align: right;
+                        margin-top: 20px;
+                    }
+                    .btnWrapper{
+                        margin: 30px 0;
+                        span{
+                            min-height: 20px;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 2736px) and (min-width: 1700px){
+    .loginPage .loginWrapper .floatCenter .cardBoard .logoHolder{max-width: 220px;}
+    .loginPage .loginWrapper .floatCenter .cardBoard h1{font-size: 35px;}
+    .loginPage .loginWrapper .floatCenter .cardBoard p{font-size: 20px;}
+}

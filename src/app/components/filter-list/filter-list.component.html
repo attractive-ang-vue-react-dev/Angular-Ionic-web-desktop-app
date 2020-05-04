@@ -1,0 +1,38 @@
+<div class="dropdownContainer">
+  <div  class="field  posIn mb_2">
+    <ion-searchbar (ionChange)="onSearchTerm($event, 1)" #search1 search-icon="search" placeholder="{{'offline_tool.placeholders.search' | translate}}"><ion-icon name="search"></ion-icon></ion-searchbar>
+    <ion-list *ngIf="showFilterList" class="list_group">
+      <div *ngIf="list.length > 0; else noItems">
+        <div *ngIf="!multiSelect">
+          <ion-radio-group name="radio-group" [(ngModel)]="filterListValue">
+            <ion-item lines="undefined" *ngFor="let item of list">
+              <ion-label *ngIf="filterListValue == item[filterId]"  [innerHTML]="convertTickLabel(search1.value, item[filterName])"></ion-label>
+              <ion-radio *ngIf="filterListValue == item[filterId]" mode="ios" slot="end" [value]="item[filterId]" (click)="unCheck()"  (ionSelect)="getSelectedList('','',false)"></ion-radio>
+
+              <ion-label *ngIf="filterListValue != item[filterId]" [innerHTML]="convertTickLabel(search1.value, item[filterName])" ></ion-label>
+              <ion-radio *ngIf="filterListValue != item[filterId]" mode="ios" slot="end" [value]="item[filterId]" (ionSelect)="getSelectedList('','',true)"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </div>
+        <div *ngIf="multiSelect">
+          <ion-item *ngFor="let item of list" (click)="getSelectedList(item,!item.isChecked, false)">
+            <ion-label [innerHTML]="convertTickLabel(search1.value, item[filterName])"></ion-label>
+            <ion-checkbox mode="md" slot="end" [checked]="item.isChecked"></ion-checkbox>
+            <span class="showCheckbox"></span>
+          </ion-item>     
+        </div>               
+      </div>
+      <ng-template #noItems>
+        <ion-item [class]="'no-data'"><ion-label>
+        {{'offline_tool.messages.no_data_found' | translate}}</ion-label>
+      </ion-item>
+    </ng-template>
+  </ion-list>
+
+  <ion-item (click)="goToAddNewComponent()" *ngIf="filterAddNew" class="add-btn last-addnew room-last">
+    <ion-label><span class=" iconLeft"><img src="./assets/images/add-48.png"></span>{{'offline_tool.headings.add_component' | translate}}</ion-label>
+
+  </ion-item>
+</div> 
+
+</div>

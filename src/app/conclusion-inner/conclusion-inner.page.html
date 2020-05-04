@@ -1,0 +1,36 @@
+<header [showBackBtn]="true" [backTitle]="('offline_tool.navigations.conclusion' | translate)" [title]="listHeader" [showSaveButton]="true" (goBackBtnEvent)="checkAndGoBackToConclusion()" (saveDataBtnEvent)="closeConclusionCity()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBackToConclusion()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+      {{'offline_tool.placeholders.city'| translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="offset-100"> {{listHeader}}</ion-title>
+    <ion-buttons class="save-btn" slot="end">
+      <div class="editLink">
+        <span class="inlineBlock">
+          <a class="btn btn-sm btn-g btn-next" (click)="closeConclusionCity()">
+            <img alt="icon-caret" src="./assets/images/icon-check-w.png">
+          </a>
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='5'></app-left-navbar>
+      </div>
+  <div class="rightSidebar margin-left-rightsidebar paddingtop38">
+  <div class="field preData">
+    <ion-input #inputField placeholder={{listHeader}} [(ngModel)]="cityName"></ion-input>
+    </div>
+  </div>
+    </div>
+  </section>
+</ion-content>

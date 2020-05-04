@@ -1,0 +1,24 @@
+<div class="ion-text-center">
+  <ul class="modal-content">
+    <li class="alert-content alert-icon">
+        <div *ngIf="type == 'info'" class="popup-icon info-icons" name="information-circle-outline">
+          <img src="./assets/images/info-icon.svg">
+        </div>
+        <div *ngIf="type == 'warning'" class="popup-icon warning-icons">
+          <img src="./assets/images/warning-icon.svg">
+        </div>
+        <div *ngIf="type == 'success'" class="popup-icon success-icons" name="checkmark">
+          <img src="./assets/images/check-icon.svg">
+        </div>
+    </li>
+    <li class="align-bottom alert-content">
+        <div class="alert-txt">{{message}}</div>
+    </li>
+    <li class="alert-content alert-btn">
+        <button *ngIf="showNoButton" class="alert-btn no-btn" (click)="clickNo()">{{'offline_tool.labels.no' | translate}}</button>
+        <button *ngIf="showStayButton" class="alert-btn stay-btn" (click)="clickNo()">{{'offline_tool.labels.stay_here' | translate}}</button>
+        <button *ngIf="showOkButton" class="alert-btn ok-btn" (click)="closeModal()">{{okayText}}</button>
+        <button *ngIf="showYesButton" class="alert-btn agree-btn" (click)="clickYes()">{{'offline_tool.labels.yes' | translate}}</button>
+    </li>
+  </ul>
+</div>

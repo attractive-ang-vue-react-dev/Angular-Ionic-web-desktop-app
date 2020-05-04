@@ -1,0 +1,107 @@
+    <ion-content>
+        <section class="mainSection">
+            <div class="customContainer">
+                <div class="leftSidebar">
+                    <app-left-navbar [current_page_id]='5'></app-left-navbar>
+                </div>
+                <div class="rightSidebar margin-left-rightsidebar padding-left-82">
+                    <div class="title">
+                        <p>{{'protocol_types_title.' + currentProtocolName | translate}}</p>
+                    </div>
+                <div class="lgTitle mb-5">
+                    <h1 class="heading">{{'offline_tool.navigations.conclusion' | translate}}</h1>
+                    <div class="editLink">
+                        <span class="inlineBlock offset-back-arrow">
+                            <a (click)="goToMisc()" class="btn btn-sm btn-b btn-left">
+                                <img src="./assets/images/arrow-left.svg" alt="icon-caret">
+                            </a>
+                        </span>
+                        <span class="inlineBlock">
+                            <a (click)="goToHome()" class="btn btn-sm btn-g btn-top">
+                                <img src="./assets/images/arrow-top.svg" alt="icon-caret">
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="formWrapper">
+                    <div class="formContainer">
+                        <div class= "splitter">
+
+                            <div class="field">
+                                <div  (click)="goToConclutionCity()"><ion-item>
+                                    <ion-label>{{'offline_tool.placeholders.city' | translate}}</ion-label></ion-item>
+                                    <div  class="outCome">{{city}}</div>
+                                    <span class="iconAction">
+                                      <button  class="nothing offset-top-24">
+                                        <img src="./assets/images/right.svg" alt="icon-pencil">
+                                    </button>
+                                </span>
+                            </div>
+                          </div>
+                          <div class="field date-picker-conclusion">
+                            <ion-item class="datepickerblock remove-datepicker-border no-click">
+                                <ion-label>{{'offline_tool.placeholders.Date' | translate}}</ion-label>
+                                <div (click)="openDatePicker()" class="date-value-input">{{conclusionDate}}</div>
+                                <!-- <ion-datetime class="date-value-input" displayFormat="DD.MM.YYYY" [(ngModel)]="conclusionDate" cancelText="{{'offline_tool.labels.close' | translate}}"  doneText="{{'offline_tool.labels.finished' | translate}}" (ionChange)="ionDateChange()"></ion-datetime> -->
+                            </ion-item>
+                        </div>
+                    </div>
+                    <div class="classicButton">
+                        <span>
+                            <ion-button (click)="openModal()" [disabled]="pdfPreviewClicked"><ion-spinner *ngIf="pdfPreview" class="loader-color-default" name="crescent"></ion-spinner>{{'offline_tool.labels.pdf_preview' | translate}}</ion-button>
+                        </span>
+                        <!-- <p><button ion-button class="classicButton" (click)="showPdf()">{{'offline_tool.labels.pdf_preview' | translate}}</button><br>                             -->
+                        </div>
+                    </div>
+                </div>
+                <div class="signatureWrapper" *ngIf="currentSession">
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('incoming')" (click)="presentPopover('incoming')">
+                        <label>{{'offline_tool.labels.signature_resident_incoming' | translate}}</label>
+                        <div class="signatureShowcase" >
+                            <img *ngIf="incomingResSign" src="{{incomingResSign}}" />
+                        </div>
+                    </div>
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('outgoing')" (click)="presentPopover('outgoing')">
+                        <label>{{'offline_tool.labels.signature_resident_outgoing' | translate}}</label>
+                        <div class="signatureShowcase" >
+                            <img *ngIf="outgoingResSign"  src="{{outgoingResSign}}" />
+                        </div>
+                    </div>
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('tu_gu')" (click)="presentPopover('tu_gu')">
+                        <label>{{'offline_tool.labels.signature_tu_gu' | translate}}</label>
+                        <div class="signatureShowcase">
+                            <img *ngIf="tuCuSign" src="{{tuCuSign}}" />
+                        </div>
+                    </div>
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('service_provider')" (click)="presentPopover('service_provider')">
+                        <label>{{'offline_tool.labels.signature_service_provider' | translate}}</label>
+                        <div class="signatureShowcase">
+                            <img *ngIf="serviceProviderSign"  src="{{serviceProviderSign}}" />
+                        </div>
+                    </div>
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('real_estate_company')" (click)="presentPopover('real_estate_company')">
+                        <label>{{'offline_tool.labels.signature_real_estate_company' | translate}}</label>
+                        <div class="signatureShowcase">
+                            <img *ngIf="RSCSign" src="{{RSCSign}}" />
+                        </div>
+                    </div>
+
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('house_owner')" (click)="presentPopover('house_owner')">
+                        <label>{{'offline_tool.labels.signature_house_owner' | translate}}</label>
+                        <div class="signatureShowcase">
+                            <img *ngIf="houseOwnerSign" src="{{houseOwnerSign}}" />
+                        </div>
+                    </div>
+                    <div class="signatureShowcaseContainer" *ngIf="currentSession.conclusion.signature.hasOwnProperty('resident')" (click)="presentPopover('resident')">
+                        <label>{{'offline_tool.labels.signature_resident' | translate}}</label>
+                        <div class="signatureShowcase">
+                            <img *ngIf="residentSign" src="{{residentSign}}" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</ion-content>

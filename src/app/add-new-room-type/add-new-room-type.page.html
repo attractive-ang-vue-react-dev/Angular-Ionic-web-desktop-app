@@ -1,0 +1,37 @@
+<header [showBackBtn]="true" [title]="('offline_tool.labels.add_new_room_type' | translate)" [backTitle]="('offline_tool.labels.room_type' | translate)"  [showSaveButton]="true" (goBackBtnEvent)="goBackToAddRoom()" (saveDataBtnEvent)="closeListSelector()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBackToAddRoom()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+        {{'offline_tool.labels.add_new_room' | translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="offset-100"> {{'offline_tool.labels.add_new_room_type' | translate}}</ion-title>
+    <ion-buttons class="save-btn" slot="end">
+      <div class="editLink">
+        <span class="inlineBlock">
+          <a class="btn btn-sm btn-g btn-next" (click)="closeListSelector()">
+            <img alt="icon-caret" src="./assets/images/icon-check-w.png">
+          </a>
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div class="rightSidebar margin-left-rightsidebar field">
+        <!-- <ion-item> -->
+          <ion-input class="" [(ngModel)]="getNewRoomTypeName" placeholder="{{'offline_tool.labels.room_name' | translate}}" type="text"></ion-input>
+          <!-- <ion-label></ion-label> -->
+          <!-- </ion-item>     -->
+          <!-- <app-filter-list [list]="listArr" [filteredList]="filteredListArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName"></app-filter-list> -->
+        </div>
+      </div>
+    </section>
+  </ion-content>

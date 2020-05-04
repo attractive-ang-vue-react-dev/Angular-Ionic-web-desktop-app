@@ -1,0 +1,8 @@
+<div class="sortList">
+    <div class="cardList top"><ul lines="none" class="list-group">
+ <li class="list-item"  *ngFor="let sortByItem of sortByList" (click)="selectSortByMethod(sortByItem.id)">
+    {{sortByItem.name  | translate}}
+  </li>
+</ul>
+    </div>
+</div>

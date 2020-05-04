@@ -1,0 +1,32 @@
+<header [showBackBtn]="true" [title]="('offline_tool.headings.add_component' | translate)" [backTitle]="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomIdObj.room_name) ? ('rooms.'+roomIdObj.room_name | translate) : roomIdObj.room_name"  [showSaveButton]="false" (goBackBtnEvent)="gotoRoomObject()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="gotoRoomObject()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+        {{'offline_tool.navigations.rooms' | translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="offset-100">
+      <span class="object" *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomIdObj.room_name)">{{'rooms.'+roomIdObj.room_name | translate}}</span>
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <section class="mainSection">
+        <div class="customContainer">
+          <div class="leftSidebar">
+            <app-left-navbar [current_page_id]='3'></app-left-navbar>
+          </div>
+          <div class="rightSidebar margin-left-rightsidebar">
+              <div class="formWrapper add-component-items">
+                  <!-- <h3>{{'offline_tool.labels.components' | translate}}</h3> -->
+                  <app-filter-list [list]="listArr" [backPageUrl]="'/add-component'" [goBack]="true" (goBackToPage)="goToRoom()" [filteredList]="filteredListArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName" [filterAddNew]="true"></app-filter-list>
+              </div>
+
+          </div>
+        </div>
+    </section>
+  </ion-content>

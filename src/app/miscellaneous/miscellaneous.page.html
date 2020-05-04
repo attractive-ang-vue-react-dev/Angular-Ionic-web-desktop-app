@@ -1,0 +1,74 @@
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='4'></app-left-navbar>
+      </div>
+      <div class="rightSidebar margin-left-rightsidebar padding-left-82">
+        <div class="title" *ngIf="!!currentProtocolName">
+          <p>{{'protocol_types_title.' + currentProtocolName | translate}}</p>
+        </div>
+        <div class="lgTitle mb-5">
+          <h1 class="heading">Sonstiges</h1>
+          <div class="editLink">
+            <span class="inlineBlock offset-back-arrow">
+              <a [routerLink]="['/rooms']" class="btn btn-sm btn-b btn-left">
+                <img src="./assets/images/arrow-left.svg" alt="icon-caret">
+              </a>
+            </span>
+            <span class="inlineBlock">
+              <a (click)="goToConclusion()" class="btn btn-sm btn-g btn-next">
+          <img src="./assets/images/arrow-right.svg" alt="icon-caret">
+              </a>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="selectedProtocolId !== 1 && selectedProtocolId !== 2 && selectedProtocolId !== 3" class="formWrapper">
+          <h3 *ngIf="!!keyDirectoryArray && keyDirectoryArray.length > 0">{{'offline_tool.labels.key_list' | translate}}</h3>
+          <div class="formContainer">
+            <div class="field" *ngFor="let keyDirectory of keyDirectoryArray;let i = index">
+              <ion-item>
+                <ion-label>
+                  <div class="cstmSelect">{{'misc_key_lists.'+keyDirectory.name  | translate}}
+                    <div class="outCome">{{keyDirectory.key_value}}</div>
+                    <div class="cstmSpiner">
+                      <a (click)="decrementValue(i,'Key')" class="sign decrementSign"><ion-icon ios="ios-remove" md="md-remove"></ion-icon></a>
+                      <a (click)="incrementValue(i,'Key')" class="sign incrementSign"><ion-icon ios="ios-add" md="md-add"></ion-icon></a>
+                    </div>
+                  </div>
+                </ion-label>
+              </ion-item>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedProtocolId !== 1 && selectedProtocolId !== 2 && selectedProtocolId !== 3" class="formWrapper">
+          <h3 *ngIf="!!miscellaneousGeneralList && miscellaneousGeneralList.length > 0">{{'offline_tool.labels.general' | translate}}</h3>
+          <div class="formContainer">
+            <div class="field" *ngFor="let miscellaneousGeneral of miscellaneousGeneralList;let i = index">
+              <ion-item>
+                <ion-label>
+                  <div class="cstmSelect" [ngClass]="miscellaneousGeneral.name =='information_brochure' || miscellaneousGeneral.name =='handed_over_cleaned'?'noPadding':''"><span>{{(miscellaneousGeneral.name!= 'handed_over_cleaned' ? 'misc_generals.' : 'offline_tool.labels.') + miscellaneousGeneral.name | translate}}</span>
+                    <div *ngIf="miscellaneousGeneral.name!='information_brochure' && miscellaneousGeneral.name!='handed_over_cleaned'" class="outCome">{{miscellaneousGeneral.key_value}}</div>
+                    <span class="cstmToggle toggle-misc" *ngIf="miscellaneousGeneral.name =='information_brochure' || miscellaneousGeneral.name =='handed_over_cleaned'">
+                      <ion-item>
+                        <ion-toggle class="modtoggle" *ngIf="miscellaneousGeneral.name =='information_brochure'" [(ngModel)]="informationBrochure" slot="start" name="cantaloupe" color="medium" (click)="disableConclusionMenuLink()"></ion-toggle>
+                        <ion-toggle class="modtoggle" *ngIf="miscellaneousGeneral.name =='handed_over_cleaned'" [(ngModel)]="handedOverCleaned" slot="start" name="cantaloupe" color="medium" (click)="disableConclusionMenuLink()"></ion-toggle>
+                      </ion-item>
+                    </span>
+                    <div class="cstmSpiner" *ngIf="miscellaneousGeneral.name!='information_brochure' && miscellaneousGeneral.name!='handed_over_cleaned'">
+                      <a (click)="decrementValue(i,'General')" class="sign decrementSign"><ion-icon ios="ios-remove" md="md-remove"></ion-icon></a>
+                      <a (click)="incrementValue(i,'General')" class="sign incrementSign"><ion-icon ios="ios-add" md="md-add"></ion-icon></a>
+                    </div>
+                  </div>
+                </ion-label></ion-item>
+              </div>
+            </div>
+          </div>
+            <div class="textareaWrapperNotes" *ngIf="pageLoad">
+              <textarea name="" id="" cols="" rows="4" placeholder="{{'offline_tool.labels.notes' | translate}}" [(ngModel)]="miscellaneousGeneralNote" (input)="disableConclusionMenuLink()"></textarea>
+            </div>
+        </div>
+      </div>
+    </section>
+  </ion-content>

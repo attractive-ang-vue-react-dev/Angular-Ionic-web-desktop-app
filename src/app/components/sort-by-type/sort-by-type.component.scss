@@ -1,0 +1,44 @@
+.sortList {
+  width: 190px;
+  position: absolute;
+  z-index: 10;
+  top: 135px;
+  left: 121px;
+  border: 2px solid #707070;
+  border-radius: 8px;
+  div.cardList {
+    border-radius: 6px;
+    box-shadow: var(--ion-shadow-card);
+    background-color: white;
+    .list-item {
+      padding:13px 10px;
+      cursor: pointer;
+    }
+    .active {
+      background-color: #F0F0F0;
+    }
+    .list-item:hover, .list-item:active {
+      background-color: #F0F0F0;
+    }
+    .list-group {
+      height: 147px;
+      position: relative;
+      top: 8px;
+
+    }
+  }
+  .top::after {
+    content: '';
+    height: 11px;
+    width: 11px;
+    position: absolute;
+    background-color: white;
+    top: -8px;
+    left: 89px;
+    border-top:solid 2px #707070;
+    border-left: solid 2px #707070;
+    border-bottom-width: 0px;
+    transform: rotate(45deg);
+    z-index: 0;
+  }
+}

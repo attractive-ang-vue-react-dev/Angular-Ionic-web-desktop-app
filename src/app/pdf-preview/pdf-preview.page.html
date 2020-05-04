@@ -1,0 +1,14 @@
+<ion-header class="pdf-viewer-header">
+  <ion-toolbar class="pdf-header-style">
+    <ion-buttons slot="end">
+      <ion-icon name="close-circle-outline" class="close-icon" (click)="dismissModel()"></ion-icon>
+    </ion-buttons>
+    <ion-title>PDF Vorschau</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div [style.display]="!loading ? 'block' : 'none'" style="width: 100%;height: 100%;"></div>
+    <div >
+        <pdf-viewer [src]="pdfUrl" [show-all]="true" [render-text]="true"  [original-size]="true" (text-layer-rendered)="textLayerRendered($event)" (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
+    </div>
+  </ion-content>

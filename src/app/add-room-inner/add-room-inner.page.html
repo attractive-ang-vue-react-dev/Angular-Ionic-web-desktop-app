@@ -1,0 +1,35 @@
+<header [showBackBtn]="true" [title]="listHeader" [backTitle]="backTitle"  [showSaveButton]="!goBack ? true : false" (goBackBtnEvent)="goToAddRoom()" (saveDataBtnEvent)="closeListSelector()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div class="backLink" (click)="goToAddRoom()">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>     
+        <p>{{backTitle}}</p>
+      </div>
+    </ion-buttons>
+    <ion-title class="offset-100"> {{listHeader}}</ion-title>
+    <ion-buttons class="save-btn" *ngIf="!goBack" slot="end">
+      <div class="editLink">
+        <span class="inlineBlock">
+          <a class="btn btn-sm btn-g btn-next" (click)="closeListSelector()">
+            <img alt="icon-caret" src="./assets/images/icon-check-w.png">
+          </a>
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div class="rightSidebar margin-left-rightsidebar">
+        <app-filter-list *ngIf="filterListName !='real_estate_company' && filterListName !='house_owner'" [list]="listArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName" [goBack]="goBack" (goBackToPage)="closeListSelector()" [multiSelect]="multiSelect"></app-filter-list>
+      </div>
+    </div>
+  </section>
+</ion-content>

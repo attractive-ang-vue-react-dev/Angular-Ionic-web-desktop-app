@@ -1,0 +1,13 @@
+{
+  "name": "myhome",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://myhome.propify.app"
+    }
+  ],
+  "type": "angular"
+}

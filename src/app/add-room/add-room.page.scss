@@ -1,0 +1,176 @@
+.secAddRoom{
+    .customField{
+        ion-input {
+            background: var(--ion-complete-color)!important;
+            height: 50px!important;
+            border-radius: 8px!important;
+            border: 1px solid var(--ion-border-light)!important;
+            padding: 0 10px!important;
+        }
+        ion-item{
+            --background: transparent!important;
+            --border: none!important;
+            --highlight-color-valid: transparent;
+            --highlight-color-invalid: transparent;
+            --highlight-color-focused: none;
+        }
+        .selectCustom{
+            background: var(--ion-complete-color)!important;
+            height: 50px!important;
+            border-radius: 8px!important;
+            border: 1px solid var(--ion-border-light)!important;
+            ion-select{
+                padding: 0;
+                select-icon{
+                    opacity: 0!important;
+                }
+            }
+        }
+    }
+
+    ion-list ion-item:last-child {
+        border-radius: 0px !important;
+    }
+    // .md.list-md.hydrated {
+    //     border-radius:0px;
+    // }
+    .cstmSelect .ion-text-wrap{
+        float: right;
+        padding-right: 25px;
+        color: #9E9FA0;
+        font-size: 18px;
+        position: relative;
+        bottom: 2px;
+    }
+    .componentList {
+        // box-shadow: var(--ion-shadow-card);
+        overflow: hidden;
+        border-radius: 8px !important;
+        
+        .list-md{
+            ion-item{
+                --background: transparent!important;
+                --background-activated: none!important;
+                --background-focused: none!important;
+                --background-hover: none!important;
+                ion-label{
+                    color: var(--ion-balticsea-color);
+                    padding: 10px 0;
+                    display: block;
+                    margin: 0;
+                }
+                ion-checkbox{
+                    opacity: 0;
+                    margin: 0;
+                }
+                .showCheckbox{
+                    height: 20px;
+                    width: 28px;
+                    background: url(../../assets/images/icon-check-w.png) center center no-repeat;
+                    background-size: 22px;
+                }
+                &.item-checkbox-checked{
+                    .showCheckbox{
+                        background: url(../../assets/images/check.svg) center center no-repeat;
+                        background-size: 22px;
+                    }
+                }
+            }
+            ion-checkbox{
+                .checkbox-icon{
+                    --display: none;
+                }
+            }
+        }
+    }
+    .addNewcomponent {
+        height: 40px;
+        width: 40px;
+        border: 2px dashed var(--ion-theme-secondary-color);
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        margin: 20px 0 0;
+        color: var(--ion-theme-secondary-color);
+        a{
+            color: var(--ion-theme-secondary-color);
+        }
+    }
+    .addNewRoom{
+        .customField{
+            a.icon{
+                background: var(--ion-light-backgound);
+                border: 1px solid var(--ion-color-light-shade);
+                position: absolute;
+                right: -1px;
+                display: block;
+                height: 50px;
+                width: 50px;
+                text-align: center;
+                padding: 15px;
+                border-radius: 0 8px 8px 0;
+                z-index: 99;
+                bottom: 5%;
+                img{
+                    max-width: 20px;
+                }
+            }
+        }
+    }
+}
+.field .iconAction .nothing {
+    max-width: 14px;
+}
+.componentList ion-item.add-btn {
+    padding: 0 0 0 0px;
+    margin: -1px 0 0 0;
+    cursor: pointer;
+    --background: #F0F0F0 !important;
+    --inner-border-width: 0;
+    border: none !important;
+}
+.last-element ion-item {
+    --inner-border-width: 0;
+}
+.mx-width18 {
+    max-width: 18px;
+    height: 15px;
+    margin-right: 6px;
+}
+.field .cstmSelect{
+    color:#3d3f41;
+}
+
+.rightSidebar .md.hydrated{
+    padding: 0;
+}
+.rightSidebar .md.hydrated .customField{
+    margin-bottom: 30px;
+}
+.rightSidebar .md.hydrated .customField .field{
+   margin-bottom: 0;
+}
+.sc-ion-buttons-md-h{
+    position: absolute;
+    left: 55px;
+}
+.right-arrow {
+    right: 65px;
+    left: inherit;
+}
+.button-native:hover{
+    background: none !important;
+}
+ion-title{
+    line-height: initial;
+}
+
+.add-room-icon {
+    position: relative;
+    top:2px;
+}
+
+.add_icon {
+    position: unset;
+    margin-right: 10px;
+}

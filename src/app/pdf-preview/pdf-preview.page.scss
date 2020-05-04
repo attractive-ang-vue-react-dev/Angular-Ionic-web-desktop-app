@@ -1,0 +1,21 @@
+.close-icon {
+	font-size: 25px;
+	cursor: pointer;
+	padding-right: 10px;
+}
+.pdf-viewer-header{
+	margin-left: 0px !important; 
+	width: 100%;
+}
+.pdf-header-style {
+	--background: var(--ion-balticsea-color);
+	color: white;
+}
+
+ion-content{
+	font-family: 'Roboto' !important;
+}
+.sc-ion-buttons-md-h{
+	left: calc(100% - 40px) !important;
+	top:15px;
+}

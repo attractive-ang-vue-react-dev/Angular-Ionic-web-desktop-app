@@ -1,0 +1,45 @@
+
+.field{
+    .cstmSelect{
+        margin:0 20px;
+        border-top: solid 1px #E2E2E2;
+        padding: 0px;
+        border-radius:0px;
+        .add_icon {
+            background-image: url('../../assets/images/add-48.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: 21px;
+            left: 15px;
+        }
+        
+    }
+    &:first-child{
+        .cstmSelect{
+            border-top: solid 0px #707070;
+        }
+    }
+    &:last-child{
+        .cstmSelect{
+            border-top: solid 0px #707070;
+            padding-left: 25px;
+        }
+    }
+    
+    &.grayBg{
+        background: #F0F0F0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-radius: 0 0 8px 8px;
+        top: -5px;
+        .cstmSelect{
+            background: #F0F0F0;
+        }
+    }
+    
+}
+

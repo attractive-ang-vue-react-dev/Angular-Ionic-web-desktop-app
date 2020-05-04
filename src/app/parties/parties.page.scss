@@ -1,0 +1,45 @@
+
+.cstmSelect{
+    color: #3d3f41;
+    font-weight: 400;
+    .outCome {
+        max-width: 250px;
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis !important;
+        font-weight: 400;
+        color: #9E9FA0;
+
+    }
+    .offset-top-24{
+        margin-top: 24px !important;
+    }
+
+}
+
+.field .outCome{
+    color: #9E9FA0;
+    font-size:18px;
+}
+
+.splitter .field {
+    margin-bottom: unset;
+    ion-item {
+        cursor: pointer;
+    }
+
+    &:first-child {
+        ion-item {
+            border-top: unset;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+    }
+
+    &:last-child {
+        ion-item {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    }
+}

@@ -1,0 +1,242 @@
+<ion-content>
+    <section class="mainSection">
+        <div class="customContainer">
+          <div class="leftSidebar">
+            <app-left-navbar [current_page_id]='2'></app-left-navbar>
+          </div>
+          <div class="rightSidebar margin-left-rightsidebar">
+             <div class="title">
+                <p>{{'protocol_types_title.' + currentProtocolName | translate}}</p>
+            </div>
+              <div class="lgTitle mb-5">
+                <h1 class="heading">{{'offline_tool.navigations.parties' | translate}}</h1>
+                <div class="editLink">
+                  <span class="inlineBlock">
+                    <a (click)="goToRoom()" class="btn btn-sm btn-g btn-next">
+          <img src="./assets/images/arrow-right.svg" alt="icon-caret">
+                    </a>
+                  </span>
+                </div>
+              </div>
+              
+              <div class="formWrapper" *ngIf="selectedProtocolId == 1 || selectedProtocolId == 2 || selectedProtocolId == 3">
+                <div class="formContainer splitter">
+                    <div class="field">
+                        <div (click)="openListSelector('quarter_id')">
+                            <ion-item>
+                                <ion-label>
+                                    {{'offline_tool.placeholders.quarter' | translate }}
+                                </ion-label>
+                            </ion-item>
+                            <div class="outCome">{{ quarterName }}</div>
+                            <span class="iconAction">
+                          <button class="nothing offset-top-24">
+                            <img src="./assets/images/right.svg" alt="icon-pencil">
+                          </button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div (click)="openListSelector('building_id')">
+                            <ion-item>
+                                <ion-label>
+                                    {{'offline_tool.placeholders.building' | translate }}
+                                </ion-label>
+                            </ion-item>
+                            <div class="outCome">{{ buildingName }}</div>
+                            <span class="iconAction">
+                          <button class="nothing offset-top-24">
+                            <img src="./assets/images/right.svg" alt="icon-pencil">
+                          </button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div (click)="openListSelector('unit_id')">
+                            <ion-item lines="none">
+                                <ion-label>
+                                    {{'offline_tool.placeholders.unit' | translate }}
+                                </ion-label>
+                            </ion-item>
+                            <div class="outCome">{{ unitName }}</div>
+                            <span class="iconAction">
+                          <button class="nothing offset-top-24">
+                            <img src="./assets/images/right.svg" alt="icon-pencil">
+                          </button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="formWrapper" *ngIf="partiesInfo.unit_id !='' && selectedProtocolId == 3">
+                <div class="formContainer splitter">
+                    <div class="field">
+                        <div (click)="openListSelector('resident')">
+                            <ion-item lines="none">
+                                <ion-label>
+                                    {{'offline_tool.placeholders.residents' | translate}}
+                                </ion-label>
+                            </ion-item>
+                            <div class="outCome">{{residentName}}</div>
+                            <span class="iconAction">
+                        <button class="nothing offset-top-24">
+                          <img src="./assets/images/right.svg" alt="icon-pencil">
+                        </button>
+                      </span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="formWrapper" *ngIf="selectedProtocolId == 4 || selectedProtocolId == 5">
+                <div class="formContainer splitter">
+
+                    <div *ngIf="selectedProtocolId == 5" class="field">
+                        <div (click)="openListSelector('moving_out_id')">
+                            <ion-item *ngIf="movingOutName!=''">
+                                <ion-label>
+                                    {{'offline_tool.placeholders.moving_out_resident' | translate}}
+                                </ion-label>
+                            </ion-item>
+                            <ion-item lines="none" *ngIf="movingOutName==''">
+                                <ion-label>
+                                    {{'offline_tool.placeholders.moving_out_resident' | translate}}
+                                </ion-label>
+                            </ion-item>
+                            <div class="outCome">{{ movingOutName }}</div>
+                            <span class="iconAction">
+                        <button class="nothing offset-top-24">
+                          <img src="./assets/images/right.svg" alt="icon-pencil">
+                        </button>
+                      </span>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedProtocolId == 4" class="field">
+                      <div (click)="openListSelector('moving_in_id')">
+                        <ion-item>
+                          <ion-label>
+                            {{'offline_tool.placeholders.moving_in_resident' | translate }}
+                          </ion-label>
+                        </ion-item>
+                        
+                        <div class="outCome">{{ movingInName }}</div>
+                        <span class="iconAction">
+                          <button class="nothing offset-top-24">
+                            <img src="./assets/images/right.svg" alt="icon-pencil">
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field" *ngIf="partiesInfo.moving_in_id || (selectedProtocolId==5 && partiesInfo.moving_out_id)">
+                      <div (click)="openListSelector('relation_id')">
+                        <ion-item lines="none" *ngIf="selectedProtocolId==5 && partiesInfo.moving_out_id">
+                            <ion-label>
+                                {{'offline_tool.placeholders.relations' | translate}}
+                            </ion-label>
+                        </ion-item>
+                        <ion-item *ngIf="selectedProtocolId!=5 && partiesInfo.moving_in_id">
+                          <ion-label>
+                            {{'offline_tool.placeholders.relations' | translate}}
+                          </ion-label>
+                        </ion-item>
+                        <div class="outCome">{{ relationNames }}</div>
+                        <span class="iconAction">
+                          <button class="nothing offset-top-24">
+                            <img src="./assets/images/right.svg" alt="icon-pencil">
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  <div *ngIf="selectedProtocolId == 4" class="field">
+                    <div (click)="openListSelector('moving_out_id')">
+                      <ion-item lines="none">
+                        <ion-label>
+                          {{'offline_tool.placeholders.moving_out_resident' | translate}}
+                        </ion-label>
+                      </ion-item>
+                      <div class="outCome">{{ movingOutName }}</div>
+                      <span class="iconAction">
+                        <button class="nothing offset-top-24">
+                          <img src="./assets/images/right.svg" alt="icon-pencil">
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="formWrapper" *ngIf="selectedProtocolId != 5">
+                <div class="formContainer">
+                  <div class="field">
+                    <div (click)="openListSelector('tu_gu_id')" class="cstmSelect">{{'offline_tool.labels.tu_gu' | translate}}
+                      <div  class="outCome">{{tuguName}}</div>
+                      <span class="iconAction">
+                        <button  class="nothing offset-top-24">
+                          <img src="./assets/images/right.svg" alt="icon-pencil">
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="formWrapper" *ngIf="selectedProtocolId == 1">
+                  <div class="formContainer">
+                      <div class="field preData">
+                          <div (click)="openListSelector('service_provider')" class="cstmSelect">{{'offline_tool.placeholders.request.service_provider' | translate}}
+                              <div  class="outCome">{{serviceProviderName}}</div>
+                              <span class="iconAction">
+                                <button  class="nothing offset-top-24">
+                                  <img src="./assets/images/right.svg" alt="icon-pencil">
+                                </button>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="formWrapper">
+                <div class="formContainer">
+                  <div class="field preData">
+                    <div (click)="openListSelector('house_owner')" class="cstmSelect">{{'offline_tool.labels.houseowner' | translate}}
+                      <div  class="outCome" *ngIf="!!partiesInfo.house_owner">{{partiesInfo.house_owner.split(',')[0]}}</div>
+                      <span class="iconAction">
+                        <button  class="nothing offset-top-24">
+                          <img src="./assets/images/right.svg" alt="icon-pencil">
+                        </button>
+                      </span>
+                    </div>
+                      <!-- <ion-input [(ngModel)]="partiesInfo.house_owner" [disabled]="!isDisabledHouse" placeholder="{{'offline_tool.labels.houseowner' | translate}}" class="modal_input rightIcon"></ion-input>
+                      <span class="iconAction">
+                        <button (click)="isDisabledHouse=!isDisabledHouse" class="nothing">
+                          <img src="./assets/images/icon-pencil.png" alt="icon-pencil">
+                        </button>
+                      </span> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="formWrapper" *ngIf="selectedProtocolId == 4 || this.selectedProtocolId == 5">
+                <div class="formContainer">
+                  <div class="field preData">
+                    <div (click)="openListSelector('real_estate_company')" class="cstmSelect">{{'offline_tool.labels.realstate_company' | translate}}
+                      <div  class="outCome" *ngIf="!!partiesInfo.real_estate_company">{{partiesInfo.real_estate_company.split(',')[0]}}</div>
+                      <span class="iconAction">
+                        <button  class="nothing offset-top-24">
+                          <img src="./assets/images/right.svg" alt="icon-pencil">
+                        </button>
+                      </span>
+                    </div>
+                      <!-- <ion-input [(ngModel)]="partiesInfo.real_estate_company" [disabled]="!isDisabled" placeholder="{{'offline_tool.labels.realstate_company' | translate}}" class="rightIcon"></ion-input>
+                      <span class="iconAction">
+                        <button (click)="isDisabled=!isDisabled" class="nothing">
+                          <img src="./assets/images/icon-pencil.png" alt="icon-pencil">
+                        </button>
+                      </span> -->
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </section>
+  </ion-content>

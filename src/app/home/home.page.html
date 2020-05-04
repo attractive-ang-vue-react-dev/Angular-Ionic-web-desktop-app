@@ -1,0 +1,121 @@
+<ion-content>
+  <div *ngIf="translations.translationsList">
+  <section class="mainSection " #container>
+      <div class="customContainer">
+        <div class="leftSidebar navigationTop">  
+            <div class="logoLeft">
+              <a [routerLink]="['/home']"></a>
+            </div>
+            <ul class="nav navigationTop">
+              <li><a class="active">{{'offline_tool.navigations.home' | translate}}</a></li>
+            </ul>
+            <bottom-menu></bottom-menu>
+        </div>
+        <div class="rightSidebar margin-left-rightsidebar">
+            <div class="lgTitle mb-5">
+                <h1 class="heading">{{'offline_tool.navigations.home' | translate}}</h1>
+                <div class="editLink">
+                  <span class="inlineBlock">
+                    <div (click)="goToProtocol()" class="btn btn-sm btn-g btn-add"></div>
+                  </span>
+                </div>
+            </div>
+            <div class="header" *ngIf="cardBox?.length > 0">
+              <div class="sortClass">
+                <ion-label class="ion_label">{{'offline_tool.labels.sort_by'  | translate}} &nbsp;<span class="sortText" (click)="openSort()">{{sortByTrans  | translate}}</span></ion-label>
+                <div [ngClass] = "{'descOrder': sortByDesc,'ascOrder': !sortByDesc}" (click)="toggleSortBy()">
+                </div>
+              </div>
+              <app-sort-by-type #dropdown (sortCard)="sortCard($event)"  *ngIf="toggleSortByClass"> ></app-sort-by-type>
+              <div class="menuClass" [ngClass] = "{'collapsed': toggleCollapseMenu}" (click)="CollapseMenu()">
+                  <ion-buttons slot="end"></ion-buttons>
+              </div>
+            </div>
+            <div class="cardboxWrapper">
+              <div *ngFor="let itemCard of cardBox;let i= index" class="cardBoxContainer">
+                <div class="cardBox" [ngClass] = "{'primaryBg': !itemCard.card.isSynced && !itemCard.card.completed,
+                'secondaryBg': itemCard.card.isSynced,
+                'completeBg': itemCard.card.completed && !itemCard.card.isSynced,'collapsed': toggleCollapseMenu}" >
+                <div (click)="onCardTap(i,itemCard)" class="content-box">
+                  <span *ngIf="itemCard.card.isSynced" class="cloud_icon">
+                  </span>
+                    <h5 class="cardHeading"><span class="sub-header" *ngIf="toggleCollapseMenu">
+                        <span *ngIf="itemCard.card.units && (itemCard.protocol_type.id == 4 || itemCard.protocol_type.id == 5)">
+                             <span *ngIf="itemCard.card.units"><span *ngFor="let unit of itemCard.card.units;">{{unit}}</span>
+                         </span>&nbsp;
+                        </span>
+                        <span *ngIf="itemCard.card.unit && (itemCard.protocol_type.id == 1 || itemCard.protocol_type.id == 2 || itemCard.protocol_type.id == 3)">{{itemCard && itemCard.card.unit}}&nbsp;</span>
+                        <span *ngIf="(!itemCard.card.unit && (itemCard.protocol_type.id == 1 || itemCard.protocol_type.id == 2 || itemCard.protocol_type.id == 3)) && itemCard.card.building_name">{{itemCard.card.building_name}}&nbsp;</span>
+                    </span>{{itemCard && 'protocol_types_title.' + itemCard.protocol_type.name | translate}}<br></h5>
+                    <h1 class="sub-header" *ngIf="!toggleCollapseMenu">
+                        <span *ngIf="itemCard.card.units && (itemCard.protocol_type.id == 4 || itemCard.protocol_type.id == 5)">
+                         <span *ngFor="let unit of itemCard.card.units;">
+                                  {{unit}} <br/>
+                         </span>
+                        </span>
+                        <span *ngIf="itemCard.card.unit && (itemCard.protocol_type.id == 1 || itemCard.protocol_type.id == 2 || itemCard.protocol_type.id == 3)">{{itemCard && itemCard.card.unit}}</span>
+                        <span *ngIf="(!itemCard.card.unit && (itemCard.protocol_type.id == 1 || itemCard.protocol_type.id == 2 || itemCard.protocol_type.id == 3)) && itemCard.card.building_name">{{itemCard.card.building_name}}</span>
+                    </h1>
+                    <div class="cardContent">
+                        <div class="cardDetails">
+                            <p *ngIf="itemCard.card.moving_in_name">{{itemCard && itemCard.card.moving_in_name}}</p>
+                            <p *ngIf="itemCard.card.moving_out_name">{{itemCard && itemCard.card.moving_out_name}}</p>
+                            <p *ngIf="itemCard.card.residentName">{{itemCard && itemCard.card.residentName}}</p>
+                            <p>{{itemCard && itemCard.card.internal_quarter_id}}&nbsp;{{itemCard && itemCard.card.quarter_name}}</p>
+                        </div>
+                    </div>
+                </div>
+                  <div class="cardContent">
+                    <div class="seeMore" (click)="toggleClass(itemCard, i)"></div>
+                  </div>
+                  <div class="moreMenu" *ngIf="itemCard.card.active == true">
+                    <ion-card class="menuBox">
+                        <ion-card-content class="menubox-title">
+                          <h1 class="card-header" *ngIf="!toggleCollapseMenu"><span *ngIf="itemCard.card.units && (itemCard.protocol_type.id == 4 || itemCard.protocol_type.id == 5)"><span *ngFor="let unit of itemCard.card.units;">
+                                {{unit}}
+                        </span></span>
+                              <span *ngIf="itemCard.card.unit && (itemCard.protocol_type.id == 1 || itemCard.protocol_type.id == 2 || itemCard.protocol_type.id == 3)">{{itemCard && itemCard.card.unit}}</span>
+                              <span *ngIf="!itemCard.card.unit && itemCard.card.building_name">{{itemCard.card.building_name}}</span>
+                              <span class="menuBoxClose" (click)="toggleClass(itemCard, i)"></span>
+                          </h1>
+                          <h2 class="card-header"><span class="card-header"  *ngIf="toggleCollapseMenu">
+                            <span *ngIf="itemCard.card.units && (itemCard.protocol_type.id == 4 || itemCard.protocol_type.id == 5)">
+                              <span *ngFor="let unit of itemCard.card.units;">
+                                {{unit}}
+                              </span>&nbsp;
+                            </span>
+                              <span *ngIf="itemCard.card.unit && (itemCard.protocol_type.id == 1 || itemCard.protocol_type.id == 2 || itemCard.protocol_type.id == 3)">{{itemCard && itemCard.card.unit}}&nbsp;</span>
+                              <span *ngIf="!itemCard.card.unit && itemCard.card.building_name">{{itemCard.card.building_name}}&nbsp;</span>
+                              <span class="menuBoxClose" (click)="toggleClass(itemCard, i)"></span>
+                          </span>{{itemCard && 'protocol_types_title.' + itemCard.protocol_type.name | translate}}<br></h2>
+                          <h2 class="card-sheader">{{itemCard && itemCard.card.internal_quarter_id}}&nbsp;{{itemCard && itemCard.card.quarter_name}}</h2>
+                        </ion-card-content>
+                        <ion-card-content class="menubox-content">
+                          <div *ngIf="!toggleCollapseMenu && itemCard.card.completed && !itemCard.card.isSynced" class="menuBoxSync menu-btn" lines="none" (click)="syncData(i)">
+                            <h2 class="btn-title cloudIcon">{{'offline_tool.labels.upload' | translate}}</h2>
+                          </div>
+                            <div *ngIf="!toggleCollapseMenu"  class="menuBoxDel menu-btn" lines="none" (click)="deleteCard(i)">
+                                <h2 class="btn-title menu-del">{{'offline_tool.labels.delete' | translate}}</h2>
+                            </div>
+                            <div *ngIf="toggleCollapseMenu" [ngClass]="{'sync-del-content': itemCard.card.completed && !itemCard.card.isSynced}" >
+                                <div *ngIf="itemCard.card.completed && !itemCard.card.isSynced" class="menuBoxSync menu-btn" lines="none" (click)="syncData(i)">
+                                    <h2 class="btn-title cloudIcon">{{'offline_tool.labels.upload' | translate}}</h2>
+                                </div>
+                                <div *ngIf="itemCard.card.completed && !itemCard.card.isSynced" class="menuBoxSeperator menu-btn" lines="none">
+                                </div>
+                                <div class="menuBoxDel menu-btn" lines="none" (click)="deleteCard(i)">
+                                <h2 class="btn-title menu-del">{{'offline_tool.labels.delete' | translate}}</h2>
+                              </div>
+                             </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+        </div>
+      </div>
+  </section>
+  </div>
+</ion-content>

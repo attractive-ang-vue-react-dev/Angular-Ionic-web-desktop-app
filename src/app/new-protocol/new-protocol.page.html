@@ -1,0 +1,78 @@
+
+<header [showBackBtn]="true" [showTickButton]="false" [showNextArrowButton]="true" [backTitle]="('offline_tool.navigations.home' | translate)" [title]="('offline_tool.headings.new_protcol' | translate)" [showSaveButton]="true" (goBackBtnEvent)="goToHomePage()" (saveDataBtnEvent)="goToParties()"></header>
+<!-- <ion-header> -->
+  <!-- <ion-toolbar>
+    <ion-buttons slot="start">
+        <div class="backLink" (click)="goToHomePage()">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>
+          <p>        {{'offline_tool.navigations.home' | translate}}
+          </p>
+        </div>
+    </ion-buttons>
+    <ion-title class="offset-100">{{'offline_tool.headings.new_protcol' | translate}}</ion-title>
+    <ion-buttons slot="end" class="right-arrow">
+      <div class="editLink">
+        <span class="inlineBlock">
+          <a (click)="goToParties()" class="btn btn-sm btn-g btn-next">
+          <img src="./assets/images/arrow-right.svg" alt="icon-caret">
+                    </a>
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar navigationTop">
+        <div class="logoLeft">
+          <a [routerLink]="['/home']">
+            <img src="./assets/images/logo.png" title="my home | logo">
+          </a>
+        </div>
+        <ul class="nav navigationTop">
+          <li><a [routerLink]="['/home']" class="active">{{'offline_tool.navigations.home' | translate}}</a></li>
+        </ul>
+        <bottom-menu></bottom-menu>
+        <!-- <div class="btnWrapper">
+          <ion-buttons>
+            <ion-back-button></ion-back-button>
+          </ion-buttons>
+          <ion-title class="btn btnPrimary" (click)="goToParties()">
+            Neu <span class="icon borderRound"><img src="./assets/images/add.png" alt="icon add"></span>
+        </ion-title>
+      </div> -->
+        </div>
+        <div class="rightSidebar margin-left">
+          <!-- <div class="title">
+            <p>{{'offline_tool.navigations.home' | translate}}</p>
+          </div> -->
+          <!-- <div class="lgTitle">
+            <h1 class="heading">{{'offline_tool.headings.new_protcol' | translate}}</h1>
+            <div class="editLink">
+              <span class="inlineBlock">
+                <ion-buttons>
+                  <ion-button></ion-button>
+                </ion-buttons>
+                <ion-title (click)="goToParties()">{{'offline_tool.labels.continue' | translate}}</ion-title>
+              </span>
+            </div>
+          </div> -->
+          <div class="dropdownContainer componentList">
+            <div class="dropdownlist">
+              <ion-list radio-group ngDefaultControl>
+                <ion-radio-group name="radio-group" [(ngModel)]="selectedProtocolId">
+                  <ion-item *ngFor="let protocol of protocolList">
+                    <ion-label>{{'protocol_types_title.' + protocol.name  | translate}}</ion-label>
+                    <ion-radio mode="ios" slot="end" value="{{protocol.id}}"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ion-content>

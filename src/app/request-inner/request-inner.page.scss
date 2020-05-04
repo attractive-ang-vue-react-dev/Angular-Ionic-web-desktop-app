@@ -1,0 +1,53 @@
+::ng-deep{
+    .marker-style {
+        font-size: 30px;
+        color: #878810;
+    }
+    .no-plan-avail-style {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        text-align: center;
+        width: 100%
+    }
+}
+.location-style {
+    .locateContainer {
+        display: block;
+        width: 100%;
+        height: calc(((100vh/3)*2.4)) !important;
+        border-radius: 8px;
+        position: relative;
+    }
+}
+.plan-container-width{
+    width: 676px;
+}
+
+//.hydrated{
+//    border-radius: 8px;
+//}
+ion-item:last-child{
+    --border-color: #fff;
+}
+.drag-block {    
+    width: 30px;
+    height: 35px;
+    padding: 0px 0px 0px 0px;
+    line-height: 37px;
+    z-index: 9999;
+    position: relative;
+}
+.pdfViewerStyle {
+    z-index: -1;
+    position: relative;
+}
+.percentage{
+    color: #3d3f41 !important;
+    --highlight-background: none;
+
+}
+
+.item-interactive.ion-valid {
+    --highlight-background: none !important;
+}

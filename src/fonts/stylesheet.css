@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'RadikalW03-UltraThin';
+    src: url('RadikalW03-UltraThin.woff2') format('woff2'),
+        url('RadikalW03-UltraThin.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03-UltraThinItalic';
+    src: url('RadikalW03-UltraThinItalic.woff2') format('woff2'),
+        url('RadikalW03-UltraThinItalic.woff') format('woff');
+    font-weight: lighter;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Thin.woff2') format('woff2'),
+        url('RadikalW03-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-ThinItalic.woff2') format('woff2'),
+        url('RadikalW03-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Light.woff2') format('woff2'),
+        url('RadikalW03-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Regular.woff2') format('woff2'),
+        url('RadikalW03-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Italic.woff2') format('woff2'),
+        url('RadikalW03-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Medium.woff2') format('woff2'),
+        url('RadikalW03-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-MediumItalic.woff2') format('woff2'),
+        url('RadikalW03-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Bold.woff2') format('woff2'),
+        url('RadikalW03-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-BoldItalic.woff2') format('woff2'),
+        url('RadikalW03-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-Black.woff2') format('woff2'),
+        url('RadikalW03-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('RadikalW03-BlackItalic.woff2') format('woff2'),
+        url('RadikalW03-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('Radikal-Italic.woff2') format('woff2'),
+        url('Radikal-Italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('Radikal-Bold.woff2') format('woff2'),
+        url('Radikal-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RadikalW03';
+    src: url('Radikal-BoldItalic.woff2') format('woff2'),
+        url('Radikal-BoldItalic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+

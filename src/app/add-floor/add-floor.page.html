@@ -1,0 +1,17 @@
+<header [showBackBtn]="true" [backTitle]="('offline_tool.labels.floors' | translate)" [title]="'offline_tool.labels.add_new_floor' | translate "
+  [showSaveButton]="true" (goBackBtnEvent)="backToRoomPage()" (saveDataBtnEvent)="goToRoomsPage()"></header>
+  
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div class="rightSidebar margin-left-rightsidebar" *ngIf="show">
+        <app-filter-list [list]="listArr"
+          [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName" [goBack]="goBack"
+          (goBackToPage)="closeListSelector()" [multiSelect]="multiSelect" (checkValidListItem)="validationOnFilterList($event)"></app-filter-list>
+      </div>
+    </div>
+  </section>
+</ion-content>

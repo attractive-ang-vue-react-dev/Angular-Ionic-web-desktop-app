@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55.188" height="55.188" viewBox="0 0 55.188 55.188">
+  <defs>
+    <filter id="Background" x="0" y="0" width="55.188" height="55.188" filterUnits="userSpaceOnUse">
+      <feOffset dy="-2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Gruppe_451" data-name="Gruppe 451" transform="translate(-76.565 -907.813)">
+    <g transform="matrix(1, 0, 0, 1, 76.57, 907.81)" filter="url(#Background)">
+      <g id="Background-2" data-name="Background" transform="translate(5 7)" fill="#f6f6f6" stroke="#cdced2" stroke-miterlimit="10" stroke-width="0.5">
+        <rect width="45.188" height="45.188" rx="10" stroke="none"/>
+        <rect x="-0.25" y="-0.25" width="45.688" height="45.688" rx="10.25" fill="none"/>
+      </g>
+    </g>
+    <g id="Gruppe_449" data-name="Gruppe 449" transform="translate(-963 809)">
+      <g id="Gruppe_448" data-name="Gruppe 448" transform="translate(1031.119 118)">
+        <g id="Gruppe_447" data-name="Gruppe 447" transform="translate(24.368)">
+          <g id="anhang">
+            <path id="Pfad_40" data-name="Pfad 40" d="M18.511,2.659H11.5a.9.9,0,0,1-.907-.509L9.894,1.1A2.417,2.417,0,0,0,7.777,0H4.316A4.27,4.27,0,0,0,0,4.316V16.739a4.27,4.27,0,0,0,4.316,4.316H18.511a4.27,4.27,0,0,0,4.316-4.316V6.98A4.266,4.266,0,0,0,18.511,2.659Zm2.784,14.08a2.719,2.719,0,0,1-2.779,2.779H4.316a2.719,2.719,0,0,1-2.779-2.779V10.527A2.719,2.719,0,0,1,4.316,7.748H18.511a2.719,2.719,0,0,1,2.779,2.779v6.212Zm0-9.519L21.1,7.076a4.456,4.456,0,0,0-2.592-.864H4.316a4.467,4.467,0,0,0-2.592.864l-.192.144v-2.9A2.719,2.719,0,0,1,4.311,1.536H7.772a.9.9,0,0,1,.907.509L9.38,3.1A2.417,2.417,0,0,0,11.5,4.2h7.009a2.719,2.719,0,0,1,2.779,2.779V7.22Z" transform="translate(0 0)" fill="#9e9fa0"/>
+          </g>
+        </g>
+        <g id="add" transform="translate(36.259 6.067) rotate(45)">
+          <path id="Pfad_35" data-name="Pfad 35" d="M10.572,5.075H5.925V.425a.425.425,0,1,0-.851,0V5.075H.425a.425.425,0,1,0,0,.851H5.075v4.649a.425.425,0,1,0,.851,0V5.925h4.649a.425.425,0,1,0,0-.851Z" fill="#9e9fa0"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

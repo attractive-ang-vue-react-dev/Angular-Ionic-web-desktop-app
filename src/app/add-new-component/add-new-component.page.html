@@ -1,0 +1,40 @@
+<header [showBackBtn]="true" [title]="('offline_tool.labels.new' | translate)" [backTitle]="this.roomIdObj.id == 999 ? ('offline_tool.labels.add_new_room' | translate) : ('offline_tool.headings.add_component' | translate)"  [showSaveButton]="true" (goBackBtnEvent)="goBackToRoomOrAddComponent()" (saveDataBtnEvent)="goToRoomOrAddComponent()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBackToRoomOrAddComponent()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+        {{'offline_tool.navigations.rooms' | translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="offset-100">
+      <span class="object" *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomIdObj.room_name)">{{'rooms.'+roomIdObj.room_name | translate}}</span>
+    </ion-title>
+  <ion-buttons class="save-btn" slot="end">
+      <div class="editLink">
+    <span class="inlineBlock">
+      <a class="btn btn-sm btn-g btn-next" (click)="goToRoomOrAddComponent()">
+        <img alt="icon-caret" src="./assets/images/icon-check-w.png">
+      </a>
+    </span>
+      </div>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <section class="mainSection">
+        <div class="customContainer">
+          <div class="leftSidebar">
+            <app-left-navbar [current_page_id]='3'></app-left-navbar>
+          </div>
+          <div class="rightSidebar margin-left-rightsidebar paddingtop38">
+              <div class="field">
+                  <!-- <h3>{{'offline_tool.labels.components' | translate}}</h3> -->
+                  <ion-input #inputField [(ngModel)]="componentName" placeholder="{{placeholderNewComponent}}"></ion-input>
+              </div>
+
+          </div>
+        </div>
+    </section>
+  </ion-content>

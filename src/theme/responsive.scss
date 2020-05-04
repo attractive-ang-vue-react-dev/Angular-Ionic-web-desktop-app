@@ -1,0 +1,32 @@
+@media only screen and (max-width: 2736px) and (min-width: 1700px){
+    .mainSection .customContainer .leftSidebar .logoLeft {max-width: 180px;}
+    .mainSection .customContainer .leftSidebar {min-width: 400px;}
+    .mainSection .customContainer .leftSidebar .navigationTop {padding: 0 20px 0 80px;}
+    .mainSection .customContainer .leftSidebar .navigationTop li a {font-size: 28px;}
+    .mainSection .leftSidebar .btnWrapper {padding: 40px 50px;}
+    .btn {font-size: 24px; height: 75px;}
+    .mainSection .customContainer .rightSidebar .lgTitle .heading {font-size: 40px;}
+    .mainSection .customContainer .rightSidebar .title {font-size: 24px; margin-bottom: 10px;}
+    .mainSection .rightSidebar .cardboxWrapper .cardBoxContainer .cardBox {padding: 100px 40px 70px!important;}
+    .mainSection .rightSidebar .cardboxWrapper .cardBoxContainer .cardBox h5{ min-height: 260px;}
+    .mainSection .rightSidebar .cardboxWrapper .cardBoxContainer .cardBox .cardHeading {font-size: 25px!important;}
+    .mainSection .rightSidebar .cardboxWrapper .cardBoxContainer .cardBox p {font-size: 25px!important;}
+    .mainSection .customContainer .rightSidebar .lgTitle .editLink .inlineBlock ion-title{font-size: 25px}
+    .mainSection .protocolList .list-md ion-item ion-label{font-size: 25px!important;}
+    .mainSection .customContainer .rightSidebar .formWrapper h3{font-size: 25px;}
+    .field input, .field .item-select{ min-height: 70px;font-size: 25px !important;}
+    .field .cstmSelect{font-size: 25px; min-height: 80px; line-height: 80px;}
+    .signatureWrapper .signatureShowcaseContainer label{font-size: 25px!important; padding: 20px 20px!important;}
+    .item.sc-ion-label-md-h, .item .sc-ion-label-md-h{padding: 10px 0!important;font-size: 20px!important;}
+    .mainSection .textareaWrapper textarea { font-size: 25px !important;}
+    
+}
+
+@media only screen and (max-width: 1130px) {
+    .rightSidebar .secObjectList ion-grid > ion-col {
+        float: left;
+        padding: 0px !important;
+        padding-bottom: 10px !important;
+        width: 100% !important;
+    }
+}

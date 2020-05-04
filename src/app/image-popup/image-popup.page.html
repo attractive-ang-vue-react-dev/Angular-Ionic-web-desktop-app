@@ -1,0 +1,16 @@
+<ion-header class="image-gallery-header">
+  <ion-toolbar class="image-gallery-style">
+    <ion-buttons slot="end">
+      <ion-icon name="close-circle-outline" class="close-icon" (click)="closeModal()"></ion-icon>
+    </ion-buttons>
+    <ion-title> {{'offline_tool.labels.gallery' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <img src="{{data.url}}"> -->
+  <ion-slides pager="{{showPager}}" #mySlider name=mySlider id=mySlider>
+    <ion-slide *ngFor="let image of imagesData.images;let i = index" >
+      <img src="{{image.img}}">
+    </ion-slide>
+</ion-slides>
+</ion-content>

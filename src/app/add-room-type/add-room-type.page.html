@@ -1,0 +1,36 @@
+<header [showBackBtn]="true" [title]="listHeader" [backTitle]="('offline_tool.labels.add_new_room' | translate)"  [showSaveButton]="false" (goBackBtnEvent)="closeListSelector()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div class="backLink" (click)="closeListSelector()">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>     
+        <p>{{'offline_tool.labels.add_new_room' | translate}}</p>               
+      </div> -->
+     <!--  <ion-button (click)="closeListSelector()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+        {{'offline_tool.labels.add_new_room' | translate}}
+      </ion-button> -->
+    <!-- </ion-buttons>
+    <ion-title class="offset-100"> {{listHeader}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div class="rightSidebar margin-left-rightsidebar">
+        <app-filter-list [list]="listArr" [goBack]="true" (goBackToPage)="closeListSelector()" [filteredList]="filteredListArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName"></app-filter-list>
+        <div class="field grayBg">
+          <div (click)="goToAddNewRoomType()" class="cstmSelect">
+            <span class="add_icon"></span>
+            {{'offline_tool.labels.add_new_room_type' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ion-content>

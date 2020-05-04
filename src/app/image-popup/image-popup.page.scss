@@ -1,0 +1,52 @@
+.close-icon {
+    font-size: 25px;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.image-gallery-header {
+    margin-left: 0px !important;
+    width: 100%;
+}
+
+.image-gallery-style {
+    --background: var(--ion-balticsea-color);
+    color: white;
+}
+
+.sc-ion-buttons-md-h {
+    left: calc(100% - 40px) !important;
+    top: 15px !important;
+}
+
+#galleryHeader {
+
+    margin-left: 0px !important;
+    width: 100%;
+
+    .sc-ion-buttons-md-h {
+        right: 10px;
+        top: 10px;
+        left: auto;
+        color: #6B0036;
+        --color: #6B0036;
+
+        ion-button {
+            color: #6B0036;
+            --color: #6B0036;
+        }
+    }
+}
+::ng-deep {
+    #mySlider {
+        .swiper-pagination-bullet-active {
+            background: #6B0036 !important;
+            --background: #6B0036 !important;
+        }
+        .swiper-slide {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

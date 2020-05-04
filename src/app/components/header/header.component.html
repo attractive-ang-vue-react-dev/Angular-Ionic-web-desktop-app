@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-buttons slot="start" *ngIf="showBackBtn">
+      <div class="backbtn" (click)="goBack()">
+        <p *ngIf="!!backTitle">{{ backTitle }}</p>
+      </div>
+    </ion-buttons>
+    <ion-title class="offset-100">
+      <div class="component">
+        <p *ngIf="!!title">{{title}}</p>                
+      </div>
+    </ion-title>
+    <ion-buttons class="save-btn" slot="end">
+      <div class="editbtn " *ngIf="showSaveButton">
+        <span  class="inlineBlock" (click)="saveData()">
+          <div *ngIf="showTickButton" class="editbtn-img btn btn-sm btn-g btn-next" ></div>
+          <div *ngIf="showNextArrowButton" class="nextbtn-img btn btn-sm btn-g btn-next"></div>
+        </span>
+      </div>
+    </ion-buttons>
+</ion-header>

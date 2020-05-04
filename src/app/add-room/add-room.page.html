@@ -1,0 +1,136 @@
+<header [showBackBtn]="true" [backTitle]="('offline_tool.navigations.rooms' | translate)" [title]="('offline_tool.labels.add_new_room' | translate)" [showSaveButton]="true" (goBackBtnEvent)="backToRoomPage()" (saveDataBtnEvent)="goToRoomsPage()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div class="backLink" (click)="backToRoomPage()">
+        <span class="icon">
+          <img src="./assets/images/back.svg" alt="icon-caret">
+        </span>     
+        <p>{{'offline_tool.navigations.rooms' | translate}}</p>               
+      </div> -->
+     <!--  <ion-button (click)="backToRoomPage()">
+        <ion-icon mode="ios" name="arrow-back"></ion-icon>
+        {{'offline_tool.labels.add_new_room' | translate}}
+      </ion-button> -->
+    <!-- </ion-buttons>
+    <ion-title class="offset-100"> {{'offline_tool.labels.add_new_room' | translate}}</ion-title>
+    
+    <ion-buttons slot="end" class="right-arrow">
+      <div class="editLink">
+        <span class="inlineBlock">
+          <a (click)="goToRoomsPage()" class="btn btn-sm btn-g">
+            <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+          </a>
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div class="rightSidebar offset-left-350 paddingtop38">
+              <div class="secAddRoom">
+                <div class="formContainer">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="12" *ngIf="showRelationDropDown">
+                        <div class="customField">
+
+                          <div class="field">
+                            <div (click)="openListSelector('new_room_relation')" class="cstmSelect">{{'offline_tool.placeholders.unit' | translate}}
+                              <div class="outCome parties-info-pos" class="ion-text-wrap">{{relationName}}</div>
+                              <span class="iconAction">
+                                <button class="nothing offset-top-24">
+                                  <img src="./assets/images/right.svg" alt="icon-pencil">
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+                        </div>        
+                      </ion-col>
+                      <ion-col size="5" *ngIf="showRelationDropDown"></ion-col>
+                      <ion-col size="12">
+                        <div class="customField">
+
+                          <div class="field">
+                            <div (click)="openListSelector('new_room_name')" class="cstmSelect">{{'offline_tool.labels.room_name' | translate}}
+                              <div class="outCome parties-info-pos" class="ion-text-wrap">{{roomName}}</div>
+                              <span class="iconAction">
+                                <button class="nothing offset-top-24">
+                                  <img src="./assets/images/right.svg" alt="icon-pencil">
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+
+                          <!-- <span class="fieldTitle">{{'offline_tool.labels.room_name' | translate}}</span> -->
+                          <!-- <ion-input [(ngModel)]="roomName" type="text" ></ion-input> -->
+                        </div>        
+                      </ion-col>
+                      <ion-col size="5"></ion-col>
+                      <ion-col size="12">
+                        <div class="customField">
+                          <div class="field">
+                            <div (click)="openRoomTypeSelector('new_room_type')" class="cstmSelect">{{'offline_tool.labels.room_type' | translate}}
+                              <!-- <div class="outCome parties-info-pos" class="ion-text-wrap">{{selectedRoomTypeData}}</div> -->
+                              <div class="outCome parties-info-pos" class="ion-text-wrap" *ngIf="isTranslateAvailable(selectedRoomTypeData)">{{'rooms.'+selectedRoomTypeData | translate}}</div>
+                              <div class="outCome parties-info-pos" class="ion-text-wrap"  *ngIf="!isTranslateAvailable(selectedRoomTypeData)">{{selectedRoomTypeData}}</div>
+
+                              <span class="iconAction">
+                                <button class="nothing offset-top-24">
+                                  <img src="./assets/images/right.svg" alt="icon-pencil">
+                                </button>
+                              </span>
+                            </div>
+                          </div>
+                          <!-- <span class="fieldTitle">{{'offline_tool.labels.room_type' | translate}}</span> -->
+                          
+                            <!-- <div class="selectCustom">
+                              <ion-item>
+                                <ion-select [(ngModel)]="roomTypeId"  (ionChange)="onChangeRoomType();">
+                                    <ion-select-option *ngFor="let roomData of roomTypes" value="{{roomData.id}}">
+                                      <ion-label *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, selectedRoomTypeData.name)">{{'rooms.'+roomData.name | translate}}</ion-label>
+                                      <ion-label *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, roomData.name)">{{roomData.name}}</ion-label>
+                                    </ion-select-option>
+                                    <ion-select-option value="new">{{'offline_tool.labels.add_new_room_type' | translate}}</ion-select-option>
+                                </ion-select>
+                                <span class="showCheckbox"></span>
+                              </ion-item>
+                            </div> -->
+                          </div>        
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+
+                <!-- <div class="addNewRoom" *ngIf="isAddNewRoom">
+                  <div class="formContainer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="5">
+                          <div class="customField">
+                            <span class="fieldTitle">{{'offline_tool.labels.add_new_room' | translate}}</span>
+                            <ion-input type="text" [(ngModel)]="addNewRoomValue"></ion-input>
+                            <a class="icon" (click)="setAddNewRoom()">
+                              <img src="./assets/images/icon-check.png">
+                            </a>
+                          </div>        
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div> -->
+
+                <div class="componentListWrapper" *ngIf="selectedProtocolId!=1">
+                    <app-filter-list [list]="listArr" [backPageUrl]="'/add-room'" [goBack]="true" (goBackToPage)="onChangeRoomType()" [filteredList]="listArr" [multiSelect]="true" [filterListValue]="filterListValues" [filterId]="filterId" [filterName]="filterName" [filterAddNew]="true"></app-filter-list>
+                  <!-- <span class="fieldTitle">{{'offline_tool.labels.components' | translate}}</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ion-content>

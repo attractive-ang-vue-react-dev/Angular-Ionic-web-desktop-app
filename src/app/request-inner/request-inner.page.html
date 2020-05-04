@@ -1,0 +1,144 @@
+<header [showBackBtn]="TranslationService.translationsList ? true : false" [backTitle]="TranslationService.isTranslationAvailable(TranslationService.translationsList.components, currentComponentName) ? ('components.' + currentComponentName | translate) : currentComponentName" [title]="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, requestInnerInfo.field) ? ('requests.category.'+fieldTitle | translate): fieldTitle" [showSaveButton]="showSaveButton" (goBackBtnEvent)="checkGoBackToRequestPage()" (saveDataBtnEvent)="goToRequestPage()"></header>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="TranslationService.translationsList">
+      <div class="backbtn" (click)="goBackToRequestPage()">
+        <p *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.components, currentComponentName)">{{'components.' + currentComponentName | translate}}</p>
+        <p *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.components, currentComponentName)">{{ currentComponentName }}</p>
+      </div>
+    </ion-buttons>
+    
+    <ion-title class="offset-100">
+      <div class="component">
+        <p *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, requestInnerInfo.field)">{{'requests.category.'+fieldTitle | translate}}</p>   
+        <p *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, requestInnerInfo.field)">{{fieldTitle}}</p>                
+      </div>
+    </ion-title>
+
+    <ion-buttons class="save-btn" slot="end">
+      <div class="editbtn " *ngIf="showSaveButton">
+        <span  class="inlineBlock">
+
+          <div class="editbtn-img btn btn-sm btn-g btn-next" (click)="goToRequestPage()"></div>
+        </span>
+      </div>
+    </ion-buttons> 
+    
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+    <div class="customContainer">
+      <div class="leftSidebar">
+        <app-left-navbar [current_page_id]='3'></app-left-navbar>
+      </div>
+      <div *ngIf="TranslationService.translationsList" class="rightSidebar margin-left-rightsidebar">
+
+        <div class="">
+          <div class="dropdownContainer" *ngIf="requestInnerInfo.fieldId == 'subcategory'">
+            <ion-list radio-group ngDefaultControl class="list_group">
+              <ion-radio-group name="radio-group" [(ngModel)]="selectedSubCategoryId" >
+                <ion-item *ngFor="let request_category of request_categories;let i = index" >
+                  <ion-label *ngIf="request_category !== 'okay'">{{ 'requests.category.'+request_category | translate}}</ion-label>
+                  <ion-label *ngIf="request_category == 'okay'">{{ 'offline_tool.categories.okay' | translate}}</ion-label>
+                  <ion-radio *ngIf="(currentProtocolId==4 || currentProtocolId==5) || ((currentProtocolId==2 || currentProtocolId==3) && partiesInfo && partiesInfo.unit_id=='')" mode="ios" slot="end" value="{{i == 1 || i == 2 ? i % 2 + 1 : i }}" (click)="goToRequestPage()" [checked]="checkSubCategory(i)"></ion-radio>
+                  <ion-radio *ngIf="(currentProtocolId==2 || currentProtocolId==3) && partiesInfo  && partiesInfo.unit_id!=''" mode="ios" slot="end" value="{{i}}" (click)="goToRequestPage()" [checked]="checkSubCategory(i)"></ion-radio>
+                  <!-- <ion-radio [ngClass]="{ 'radio-checked' : i == requestInnerInfo.fieldValue,'' : i !== requestInnerInfo.fieldValue }" mode="ios" slot="end" value="{{i}}"></ion-radio> -->
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </div>
+
+          <div class="" *ngIf="requestInnerInfo.fieldId == 'service_provider' && showFilterList">
+            <app-filter-list [list]="listArr" (goBackToPage)="goToRequestPage()" [goBack]="true" [filteredList]="filteredListArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName"></app-filter-list>
+          </div>
+
+          <div class="" *ngIf="requestInnerInfo.fieldId == 'location' && showFilterList">
+            <app-filter-list [list]="listArr" (goBackToPage)="goToRequestPage()" [goBack]="true" [filteredList]="filteredListArr" [filterListValue]="filterListValue" [filterId]="filterId" [filterName]="filterName"></app-filter-list>
+          </div>
+
+          <div class="field">
+            <div *ngIf="requestInnerInfo.fieldId == 'Title'">
+              <ion-input #inputField [(ngModel)]="title" placeholder="{{'offline_tool.placeholders.request.title' | translate}}"></ion-input>
+            </div>
+          </div>
+
+          <div class="dropdownContainer">
+            <ion-list *ngIf="requestInnerInfo.fieldId == 'Action'" radio-group ngDefaultControl>
+              <ion-radio-group name="radio-group" [(ngModel)]="actionprotocol" >
+                <ion-item *ngFor="let action of actions; let i = index" >
+                  <ion-label>{{'requests.action.' + action.label | translate}} </ion-label>
+                  <ion-radio mode="ios" slot="end" [value]="action.id" (click)="uncheckAction(action.id)" *ngIf="action.id == actionprotocol1" [checked]="true"></ion-radio>
+                  <ion-radio mode="ios" slot="end" (click)="checkActionValue(action.id)" value="{{action.id}}" *ngIf="action.id != actionprotocol1" [checked]="false"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+            
+            <ion-list *ngIf="requestInnerInfo.fieldId=='Costs to be paid by'" radio-group ngDefaultControl>
+              <ion-radio-group name="radio-group" [(ngModel)]="costbyprotocol">
+                <ion-item *ngFor="let costImpact of costImpacts;let i = index">
+                  <ion-label>{{'requests.cost_impact.'+costImpact.label  | translate}}</ion-label>
+                  <ion-radio mode="ios" slot="end" [value]="costImpact.id" (click)="uncheckCost(costImpact.id)" *ngIf="costImpact.id == costbyprotocol1" [checked]="true"></ion-radio>
+                  <ion-radio mode="ios" slot="end" [value]="costImpact.id" (click)="displaySharedInput(costImpact.id)" *ngIf="costImpact.id != costbyprotocol1" [checked]="false"></ion-radio>
+                </ion-item>
+                <ion-item *ngIf="is_shared_cost" class="percentage">
+                  <ion-input #inputField  placeholder="{{'offline_tool.labels.share' | translate}}"  type="number" [(ngModel)]="sharedValue"></ion-input>
+                  <ion-label>%</ion-label>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </div>
+
+          <div class="location-style" *ngIf="requestInnerInfo.fieldId=='Marker'" >
+            
+            <div *ngIf="!!locationUrl" class="drag-boundary"
+            [ngClass]="{ 'top-b': !edge?.top, 'bottom-b': !edge?.bottom, 'left-b': !edge?.left, 'right-b': !edge?.right }"
+            [ngStyle]="{'width': containerWidth+'px'}"
+            #myBounds>
+            <ion-slides *ngIf="ispdf==true"> 
+              <pan-zoom [config]="panZoomConfig" #panZoom class="locateContainer swiper-no-swiping" [ngStyle]="{'width': containerWidth+'px'}"> 
+               <pdf-viewer class="pdfViewerStyle" [src]="locationUrl" (page-rendered)="getPdfSize()" [fit-to-page]="true" #pdfViewer></pdf-viewer>                    
+              </pan-zoom>
+              <div
+                [ngDraggable]="draggable"
+                [position]="position"
+                [trackPosition]="trackPosition"
+                [preventDefaultEvent]="true"
+                (endOffset)="onMoveEnd($event)"
+                (edge)="checkEdge($event)" 
+                [bounds]="myBounds"
+                [inBounds]="true"
+                class="drag-block" *ngIf="!!locationUrl && !!originalLocationWidth">
+                <div class="swiper-no-swiping marker-style marker-cursor">
+                  <ion-icon name="pin"></ion-icon>
+                </div>
+              </div>
+            </ion-slides>
+          <ion-slides *ngIf="ispdf==false">
+            <ion-slide>
+              <div class="locateContainer swiper-zoom-container" #locationContainer *ngIf="ispdf==false">
+                <img [src]="locationUrl" #locationImg>        
+              </div>            
+            </ion-slide>
+            <div #marker_deficiency class="swiper-no-swiping marker-style marker-cursor" *ngIf="activeTabIndex == 2">
+              <ion-icon name="pin"></ion-icon>
+            </div>
+            <div #marker_normal_wear class="swiper-no-swiping marker-style marker-cursor" *ngIf="activeTabIndex == 1">
+              <ion-icon name="pin"></ion-icon>
+            </div><div #marker_re_cleaning class="swiper-no-swiping marker-style marker-cursor" *ngIf="activeTabIndex == 3">
+              <ion-icon name="pin"></ion-icon>
+            </div>
+            <div #marker_non_existent class="swiper-no-swiping marker-style marker-cursor" *ngIf="activeTabIndex == 4">
+              <ion-icon name="pin"></ion-icon>
+            </div>
+          </ion-slides>
+        </div>
+        <div *ngIf="!locationUrl && ispdf === false" class="locateContainer">
+          <ion-label class="no-plan-avail-style"> {{'offline_tool.labels.no_plan_available' | translate}} </ion-label>
+        </div>
+      </div>
+          </div>
+      </div>
+      </div>
+    </section>
+</ion-content>

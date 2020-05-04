@@ -1,0 +1,174 @@
+<header *ngIf="!!headerbackTitle && !!headerTitle" [showBackBtn]="TranslationService.translationsList ? true : false" [title]="(headerTitle | translate)" [backTitle]="(headerbackTitle | translate)"  [showSaveButton]="true" (goBackBtnEvent)="goToRoomObject()" (saveDataBtnEvent)="gofurther(currentComponentIndex,activeCategoryID, 'back')"></header>
+<!-- <ion-header>
+    <ion-buttons class="" slot="start" *ngIf="TranslationService.translationsList">
+      <div class="backbtn" (click)="goToRoomObject()">     
+          <p *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, currentRoomName) && ((currentProtocolId !== 1 && currentProtocolId !== 2 && currentProtocolId !== 3) || ((currentProtocolId ==1 || currentProtocolId ==2 || currentProtocolId ==3) && partiesInfo && partiesInfo.unit_id !== ''))">{{'rooms.'+currentRoomName | translate}}</p>
+          <p *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.rooms, currentRoomName) && ((currentProtocolId !== 1 && currentProtocolId !== 2 && currentProtocolId !== 3) || ((currentProtocolId ==1 || currentProtocolId ==2 || currentProtocolId ==3) && partiesInfo && partiesInfo.unit_id !== ''))">{{currentRoomName}}</p>
+          <p *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.floors, currentRoomName) && ((currentProtocolId == 1 || currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id == '')" class="backLink" (click)="goToRoomObject()">{{'floors.'+currentRoomName | translate}}</p>
+          <p *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.floors, currentRoomName) && ((currentProtocolId == 1 || currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id == '')">{{currentRoomName}}</p>
+      </div>
+    </ion-buttons>
+
+    <ion-title class="offset-100"> 
+      <div  *ngIf="(currentProtocolId !== 1 && currentProtocolId !== 2 && currentProtocolId !== 3) || ((currentProtocolId ==2 || currentProtocolId ==3) && partiesInfo && partiesInfo.unit_id !== '')" class="component">
+        <span *ngIf="TranslationService.isTranslationAvailable(TranslationService.translationsList.components, currentComponentName)">
+           {{'components.'+currentComponentName| translate}}
+        </span>
+        <span *ngIf="!TranslationService.isTranslationAvailable(TranslationService.translationsList.components, currentComponentName)">
+           {{currentComponentName}}
+        </span>
+      </div>
+
+      <div  *ngIf="currentProtocolId == 1 || ((currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id == '')" class="component">
+        <span *ngIf="requestInfo.component_id == 1 || requestInfo.component_id == 3">
+          {{'offline_tool.main_categories.deficiency' | translate}}
+        </span>
+        <span *ngIf="requestInfo.component_id ==2 || requestInfo.component_id == 4">
+          {{'offline_tool.main_categories.open_issue' | translate}}
+        </span>
+      </div>
+    </ion-title>
+
+    <ion-buttons class="save-btn " slot="end">
+      <div class="editbtn">
+        <span  class="inlineBlock">
+          <div class="btn btn-sm btn-g btn-next editbtn-img" (click)="gofurther(currentComponentIndex,activeCategoryID, 'back')"></div>
+        </span>
+      </div>
+    </ion-buttons>
+
+
+</ion-header> -->
+<ion-content>
+  <section class="mainSection">
+      <div class="customContainer">
+        <div class="leftSidebar">
+          <app-left-navbar [current_page_id]='3'></app-left-navbar>
+        </div>
+        <div *ngIf="TranslationService.translationsList" class="rightSidebar margin-left-rightsidebar">
+            <div class="requestForm" *ngIf="requestLoaded">
+
+              <div *ngIf="currentProtocolId == 1 || ((currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id == '')" class="field">
+                <div (click)="goToRequestInnerPage('location')" class="cstmSelect"><span>{{'offline_tool.labels.area' | translate}}</span>
+                  <div class="outCome">{{ getLocationName()}} </div>
+                  <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                </div>
+              </div>
+
+              <div *ngIf="(currentProtocolId != 1 && currentProtocolId != 2 && currentProtocolId != 3) || ((currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id !='')" class="field">
+                  <div (click)="goToRequestInnerPage('subcategory')" class="cstmSelect">
+                    {{'offline_tool.labels.sub_category' | translate}}
+                    <div class="outCome">{{ getCategoryName()}} </div>
+                    <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                  </div>
+              </div>
+              <br>
+              <br>
+              <div class="setting" *ngIf="activeCategoryID != 0">
+                <div class="field">
+                  <div (click)="goToRequestInnerPage('Title')" class="cstmSelect"><span [ngClass]="{'required-label-title' : requiredTitleLabel}">{{'offline_tool.placeholders.request.title' | translate}}</span>
+                  <div class="outCome">{{getTitle()}}</div>
+                    <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                  </div>              
+                </div>
+                <div class="field">
+                  <div class="textareaWrapper mb_5">
+                   <!-- <ion-textarea [(ngModel)]="description" (ionChange)="changeDescription($event)" name="" id="" cols="" rows="4" placeholder="{{ 'offline_tool.placeholders.request.description' | translate}}" ></ion-textarea>-->
+                    <textarea class="text-area-desc" name="" id="" cols="" rows="4" (keyup)="changeDescription($event)" placeholder="{{'offline_tool.placeholders.request.description' | translate}}" [(ngModel)]="description"></textarea>
+                  </div>                  
+                </div>
+                <div class="field">                  
+                </div>
+              </div>
+             
+              <br><br>
+              <div class="setting" *ngIf="activeCategoryID != 0">
+                <div class="field" *ngIf="activeCategoryID != 1">
+                  <div (click)="goToRequestInnerPage('service_provider')" class="cstmSelect">{{'offline_tool.placeholders.request.service_provider' | translate}}
+                  <div class="outCome">{{getServiceProviderName()}}</div>
+                    <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                  </div>              
+                </div>
+                <div class="field " *ngIf="((currentProtocolId == 4 || currentProtocolId == 5) && activeCategoryID == 2)
+                || ((currentProtocolId == 1 || currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id =='' && activeCategoryID == 3)
+                || (currentProtocolId == 1 && partiesInfo && partiesInfo.unit_id !='' && activeCategoryID == 3)
+                || ((currentProtocolId == 1 || currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id !='' && activeCategoryID == 2)">
+                  <div (click)="goToRequestInnerPage('Action')" class="cstmSelect">{{'requests.action.label' | translate}}
+                    <div class="outCome">{{getActionLabel()}}</div>
+                    <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                  </div>
+                </div>
+                <div class="field" *ngIf="((currentProtocolId == 4 || currentProtocolId == 5) && activeCategoryID != 1)
+                || ((currentProtocolId == 1 || currentProtocolId == 2 || currentProtocolId == 3) && activeCategoryID == 3)
+                || ((currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id !='')">
+                  <div (click)="goToRequestInnerPage('Costs to be paid by')" class="cstmSelect">{{'offline_tool.labels.cost_by' | translate}}
+                    <div class="outCome">{{getCostLabel()}}</div>
+                    <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                  </div>
+                </div>
+                <div class="field " (click)="openDatePicker()" *ngIf="(((currentProtocolId == 1 || currentProtocolId == 2 || currentProtocolId == 3) && partiesInfo && partiesInfo.unit_id == '' && activeCategoryID == 4) || (currentProtocolId==1 && partiesInfo && partiesInfo.unit_id != '' && activeCategoryID == 4))">
+                  <div class="cstmSelect">{{'Zu erledigen bis' | translate}}
+                    <div class="outCome">
+                      <div>{{due_date}}</div>
+                      <!-- <ion-datetime #datePicker value="" displayFormat="DD.MM.YYYY" max="{{maxDateYear}}-12-31" [(ngModel)]="due_date" (ionChange)="setToDate()" placeholder=""  cancelText="{{'offline_tool.labels.close' | translate}}"  doneText="{{'offline_tool.labels.finished' | translate}}" ></ion-datetime> -->
+                       <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="field" *ngIf="hasPlan">
+                  <div (click)="goToRequestInnerPage('Marker')" class="cstmSelect" ><span [ngClass]="{'required-label-location' : requiredLocationLabel}">{{'offline_tool.labels.location' | translate}}</span>
+                    <div class="outCome">{{locationSet()}}</div>
+                    <span class="iconAction">
+                      <img src="./assets/images/right.svg" alt="icon-caret">
+                    </span>
+                  </div>
+                </div>
+                <div class="field grayBg">
+                  <!-- <div class="field grayBg" *ngIf="isImagesEmpty() (click)="goToRequestInnerPage('gallery')" ">                   -->
+                  <div *ngIf="isImagesEmpty()" (click)="openCam();" class="cstmSelect">
+                    <span class="add_icon"></span>
+                    {{'offline_tool.labels.add_attachment' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="activeCategoryID != 0 && !isImagesEmpty()" class="pictureShot" >
+                <div class="imageContainer">
+                  <div (click)="openCam();" class="item galleryImg">
+                  </div>
+                  <div *ngFor="let image of inspection_images;let i = index">
+                    <div class="item galleryImg noIcon {{i}}"  >
+                      <img src="{{image.img}}" (click)="openModal(i)">
+                      <img src="assets/images/trash-48.png" class="donut" (click)="removeImage(i)" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="currentProtocolId != 1 && currentProtocolId != 2 && currentProtocolId != 3"  class="classicButton" >
+                <span *ngIf="isRemainNextComponent" >
+                  <ion-button (click)="gofurther(currentComponentIndex,activeCategoryID, 'nextComponent')" >{{'offline_tool.labels.next_component' | translate}}</ion-button>
+                </span>
+                <span class="align-right" *ngIf="currentRoomLength > 1 && isNextRoomBtn && isLastComponent">
+                  <ion-button (click)="gofurther(currentComponentIndex,activeCategoryID, 'nextRoom')" >{{'offline_tool.labels.next_room' | translate}}</ion-button>
+                </span>              
+              </div>
+            </div>
+        </div>
+      </div>
+  </section>
+</ion-content>

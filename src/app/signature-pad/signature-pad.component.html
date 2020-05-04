@@ -1,0 +1,20 @@
+<!-- <ion-header>
+	<ion-toolbar>
+		<ion-title>{{signatureType}}</ion-title>
+		<button (click)="DismissClick()">DismissClick</button>
+	</ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+	<div class="normalTextarea">
+		<signature-pad class="signature-pad" [options]="signaturePadOptions" (onBeginEvent)="drawStart()"></signature-pad>
+		<ul>
+			<li>
+				<button ion-button (click)="clearSignature()">Wiederholen</button>
+			</li>
+			<li>
+				<button ion-button (click)="drawComplete()">Speichern</button>
+			</li>
+		</ul>		
+	</div>
+</ion-content>

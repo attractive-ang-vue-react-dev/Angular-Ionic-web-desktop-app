@@ -1,0 +1,29 @@
+
+
+ion-button {
+	text-transform: none;
+	color: #6B0036;
+	font-size: 16px;
+	margin-left: 65px;
+  --background-hover: transparent !important;
+}
+
+// .mainSection .customContainer .rightSidebar {
+//   padding: 10px 75px 0 75px  !important;
+// }
+
+ion-toolbar {
+	border-bottom: 1px;
+}
+.searchbar-input{
+  text-align: left !important;
+}
+// .preData{
+//   margin-left: 9px;
+// }
+
+.md.list-md.hydrated{
+  border-radius: 8px !important;
+  max-width: 100% !important;
+  margin-left: 9px !important;
+}

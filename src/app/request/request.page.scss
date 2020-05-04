@@ -1,0 +1,192 @@
+::ng-deep{
+    .required-label-title,  .required-label-location{
+        color: #6B0036;
+    }
+    .rightSidebar {
+        .pictureShot {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            padding: 0px;
+            background-color: #F0F0F0;
+            height:120px; 
+            border-radius: 8px;
+            margin-top:10px;
+            align-items: center;
+            border: solid 1px #E2E2E2;
+            .imageContainer {
+                margin-left: 20px;
+                margin-right: 15px;
+                overflow-x: auto;
+                display: -webkit-inline-box;
+                overflow-y:hidden;
+                white-space:nowrap;
+            }
+            
+            .galleryImg {
+                height: 70px;
+                width: 73px;
+                margin: 5px 15px 5px 0px;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+                background: #cecfcf;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    opacity: 0.1;
+                    top: 0;
+                    left: 0;
+                    border: 0px dashed #fff;                 
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    height: 50%;
+                    width: 57%;
+                    top: 49%;
+                    left: 49%;
+                    background-image: url(../../assets/images/Foto.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    transform: translate(-46%, -50%);
+                }
+                img {
+                    height: 100%;
+
+                    &.donut{
+                        width:20px;
+                        height:20px;
+                        position: absolute;
+                        top: 8px;
+                        right: 5px;
+                        cursor: pointer;
+                    }
+                }
+                &.noIcon{
+                    &::before{
+                        height: 0%;
+                        width: 0%;
+                    }
+                    &::after{
+                        background: none;
+                        height: 0%;
+                        width: 0%;
+                    }
+                }
+            }
+        } 
+    }
+    
+
+    .formContainer{
+        ion-input.rightIcon{
+            input{
+                &.sc-ion-input-md{
+                    padding-right: 56px !important;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+    .requestForm{
+        .field{
+            margin-bottom:0px !important;
+            border-radius:8px;
+            background: var(--ion-color-medium-contrast);
+            .cstmSelect{
+                border-radius:8px;
+            }
+            .native-input{
+                &.sc-ion-input-md{
+                    border-radius:8px !important;
+                }
+            }
+            .textareaWrapper{
+                background: var(--ion-color-medium-contrast);
+                border-radius:8px;
+                ion-textarea{
+                    margin-top:0px;
+                    textarea{
+                        font-weight: 400 !important;
+                        color: #3d3f41 !important;
+                        border-top:solid 1px #E2E2E2;
+                        margin: 0 0 0 16px !important;
+                        width: calc(100% - 15px);
+                        padding: 10px 0px;
+                        // padding: 10px 20px !important;
+                        &::placeholder {
+                            font-weight: 400;
+                            color:#9E9FA0 !important; //sets placeholder font size
+                        }
+                    }
+                }
+                .text-area-desc {
+                    font-weight: 400 !important;
+                    color: #3d3f41 !important;
+                    border-top:solid 1px #E2E2E2;
+                    margin: 0 0 0 16px !important;
+                    width: calc(100% - 15px);
+                    border-radius: 0;
+                    padding: 10px 0px;
+                       &::placeholder {
+                            font-weight: 400;
+                            color:#9E9FA0 !important; //sets placeholder font size
+                        }
+                }
+            }
+        }
+
+        .setting{
+            background:white;
+            border-radius: 8px;
+            overflow: hidden;
+            .field{
+                .cstmSelect{
+                    margin:0 0 0 16px;
+                    border-top: solid 1px #E2E2E2;
+                    padding: 0px;
+                    border-radius:0px;
+                }
+                &:first-child{
+                    .cstmSelect{    
+                        border-top: solid 0px #707070;                      
+                    }                    
+                }
+                &:last-child{
+                    .cstmSelect{    
+                        border-top: solid 0px #707070;
+                        padding-left: 25px;
+                    }                    
+                }
+
+                &.grayBg{
+                    background: #F0F0F0;
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+                    .cstmSelect{
+                        background: #F0F0F0;
+                        margin: 0 0 0 16px;
+                    }
+                }                
+            }
+        }        
+    }  
+    .gallery-modal{
+        .modal-wrapper {
+            width:743px;
+         }
+    }
+
+    @media only screen and (min-width: 1800px){
+        .requestForm {
+            width: 100% !important;
+        }
+    }
+}
